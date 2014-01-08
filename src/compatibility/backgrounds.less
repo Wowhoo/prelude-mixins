@@ -1,0 +1,56 @@
+// Backgrounds
+// ===========
+// Generates `background` for a given element
+//
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
+// Link: spec http://www.w3.org/TR/css3-background/#the-background-clip
+// Link: spec http://www.w3.org/TR/css3-background/#the-background-origin
+// Link: spec http://www.w3.org/TR/css3-background/#the-background-size
+// 
+// Examples: 
+// .background-clip(padding-box);
+// .background-origin(border-box);
+// .background-size(50%);
+// .background-size(cover);
+// .background-size(auto 25%); /* the first value defines the width of the image, the second its height */
+// .background-size(~"6px, auto, contain"); /* Values for the multiple backgrounds */
+// -----------------------------------------------
+
+
+// Background clipping
+// -------------------
+// Specifies how an element’s background is clipped.
+// Heads up: FF 3.6 and under need "padding" instead of "padding-box"
+//
+// Values: border-box | padding-box | content-box
+.background-clip(@clip: border-box) {
+  -webkit-background-clip: @clip;
+     -moz-background-clip: @clip;
+          background-clip: @clip;
+}
+
+
+// Background origin
+// -----------------
+// Specifies what the background-position property is relative to.
+//
+// Values: padding-box | border-box | content-box;
+.background-origin(@origin: padding-box) {
+  -webkit-background-origin: @origin;
+     -moz-background-origin: @origin;
+          background-origin: @origin;
+}
+
+
+// Background sizing
+// -----------------
+// Specifies the size of the background images.
+//
+// Values: <length> | percentage | cover | contain
+.background-size(@size) {
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+          background-size: @size;
+}

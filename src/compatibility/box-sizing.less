@@ -1,0 +1,34 @@
+// Box Sizing
+// ==========
+// Generates cross-browser-compatible `box-sizing` output for a given element.
+//
+// Link: caniuse http://caniuse.com/css3-boxsizing
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+//
+// Examples: 
+// .box-sizing(border-box);
+// .border-box();
+// .content-box();
+// -----------------------------------------------
+
+
+// Box sizing
+// ----------
+// Values: content-box | border-box | inherit
+.box-sizing(@boxmodel: content-box) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+// Border box
+// ----------
+.border-box(){
+  .box-sizing(border-box);
+}
+
+// Content box
+// ----------
+.content-box(){
+  .box-sizing(content-box);
+}

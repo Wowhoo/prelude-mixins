@@ -1,0 +1,38 @@
+// Image Replacement
+// ==========================================================================
+.text-hide() {
+  font: ~"0/0" a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+
+
+
+
+//
+// .hide-text
+//
+// 隐藏文字
+// http://jsfiddle.net/necolas/drHaR/2/
+// https://github.com/twitter/bootstrap/issues/2362
+// https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757c9e03dda4e463fb0d4db5a5f82d7#commitcomment-1052728
+// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+
+.hide-text() when not (@support-old-ie) {
+    white-space: nowrap;
+    text-indent: 100%;
+    overflow: hidden;
+}
+.hide-text() when (@support-old-ie) {
+    .ie-hide-text();
+}
+
+// ie6, ie7
+.ie-hide-text() {
+    text-indent: -9999px;
+    overflow: hidden;
+    text-align: left;
+}

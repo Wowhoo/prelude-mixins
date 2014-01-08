@@ -1,0 +1,22 @@
+// User select
+// =======
+// Disables selection of content of a given element
+//
+// Link: caniuse http://caniuse.com/user-select-none
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/user-select
+//
+// Examples: 
+// .user-select(none);
+// -----------------------------------------------
+
+// User select
+// -------
+// Method of preventing text/element selection using CSS. 
+//
+// Values: none | text | all | element
+.user-select(@select) {
+  -webkit-user-select: @select;
+     -moz-user-select: @select;
+      -ms-user-select: @select; // IE10+
+          user-select: @select;
+}

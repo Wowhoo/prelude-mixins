@@ -1,0 +1,109 @@
+// Background-image
+// ==========
+// Generates `background-image` for a given element
+//
+// Link: caniuse http://caniuse.com/background-image
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
+//
+// Examples:
+// .gradient-horizontal(#eee, #000);
+// .gradient-horizontal(#eee, #000, 0.2, 0.8);
+// .gradient-horizontal(#eee, #ff0000, #000, 80%);
+// .gradient-vertical(#eee, #000);
+// .gradient-vertical(#eee, #000, 10%, 90%);
+// .gradient-vertical(#eee, #000, #ff0000, 80%);
+// .gradient-directional(45deg, #eee, #000);
+// .gradient-radial(#666, #fff);
+// .gradient-striped(45deg, #555);
+// -----------------------------------------------
+
+
+// Horizontal gradient, from left to right
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+.gradient-horizontal(@start-color; @end-color) {
+  background-image: -webkit-linear-gradient(left, @start-color, @end-color);
+  background-image:  linear-gradient(to right, @start-color, @end-color);
+  background-repeat: repeat-x;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down
+}
+
+.gradient-horizontal(@start-color; @end-color; @start-percent; @end-percent) when (isnumber(@start-percent)) {
+  background-image: -webkit-linear-gradient(left, @start-color @start-percent, @end-color @end-percent);
+  background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent);
+  background-repeat: repeat-x;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down
+}
+
+.gradient-horizontal(@start-color; @mid-color; @end-color) when (iscolor(@end-color)) {
+  background-image: -webkit-linear-gradient(left, @start-color, @mid-color, @end-color);
+  background-image: linear-gradient(to right, @start-color, @mid-color, @end-color);
+  background-repeat: no-repeat;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+.gradient-horizontal(@start-color; @mid-color; @end-color; @color-stop) when (iscolor(@end-color)) and (isnumber(@color-stop)) {
+  background-image: -webkit-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
+  background-image: linear-gradient(to right, @start-color, @mid-color @color-stop, @end-color);
+  background-repeat: no-repeat;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+.gradient-vertical(@start-color; @end-color) {
+  background-image: -webkit-linear-gradient(top, @start-color, @end-color); // Safari 5.1-6, Chrome 10+
+  background-image:  linear-gradient(to bottom, @start-color, @end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
+}
+
+.gradient-vertical(@start-color; @end-color; @start-percent; @end-percent) when (isnumber(@start-percent)) {
+  background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // Safari 5.1-6, Chrome 10+
+  background-image:  linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
+}
+
+.gradient-vertical(@start-color; @mid-color; @end-color) when (iscolor(@end-color)) {
+  background-image: -webkit-linear-gradient(@start-color, @mid-color, @end-color);
+  background-image: linear-gradient(@start-color, @mid-color, @end-color);
+  background-repeat: no-repeat;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+.gradient-vertical(@start-color; @mid-color; @end-color; @color-stop) when (iscolor(@end-color)) and (isnumber(@color-stop)) {
+  background-image: -webkit-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
+  background-image: linear-gradient(@start-color, @mid-color @color-stop, @end-color);
+  background-repeat: no-repeat;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+.gradient-directional(@deg: 45deg; @start-color; @end-color) {
+  background-repeat: repeat-x;
+  background-image: -webkit-linear-gradient(@deg, @start-color, @end-color); // Safari 5.1-6, Chrome 10+
+  background-image: linear-gradient(@deg, @start-color, @end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+}
+
+.gradient-radial(@inner-color; @outer-color) {
+  background-image: -webkit-radial-gradient(circle, @inner-color, @outer-color);
+  background-image: radial-gradient(circle, @inner-color, @outer-color);
+  background-repeat: no-repeat;
+}
+
+.gradient-striped(@angle: 45deg; @color: rgba(255,255,255,.15)) {
+  background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+  background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+}
+
+// Reset filters for IE
+//
+// When you need to remove a gradient background, do not forget to use this to reset
+// the IE filter for IE9 and below.
+.reset-filter() {
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+}

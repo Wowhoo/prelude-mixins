@@ -1,0 +1,92 @@
+.padding-rem(@value, @default-font-size: @default-font-size) {
+
+    @length: length(@value);
+    @default-value: unit(@default-font-size);
+ 
+    .inseption(@value) when (@length = 1) {
+        @rem-value: unit(unit(extract(@value, 1))/@default-value,rem);
+    .padding-inseption(@rem-value)
+    }
+    .inseption(@value) when (@length = 2) {
+        @rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem);
+    .padding-inseption(@rem-value)
+    }
+    .inseption(@value) when (@length = 3) {
+        @rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem) unit(unit(extract(@value, 3))/@default-value,rem);
+    .padding-inseption(@rem-value)
+    }
+    .inseption(@value) when (@length = 4) {
+        @rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem) unit(unit(extract(@value, 3))/@default-value,rem) unit(unit(extract(@value, 4))/@default-value,rem);
+    .padding-inseption(@rem-value)
+    }
+    .padding-inseption(@value) {
+         padding: @value;
+    }
+ 
+    .padding-inseption(@value);
+    .inseption(@value);
+}
+
+.padding-top-rem(@value, @default-font-size: @default-font-size) {
+    padding-top: @value;
+    padding-top: unit(unit(@value)/unit(@default-font-size),rem);
+}
+
+.padding-right-rem(@value, @default-font-size: @default-font-size) {
+    padding-right: @value;
+    padding-right: unit(unit(@value)/unit(@default-font-size),rem);
+}
+
+.padding-bottom-rem(@value, @default-font-size: @default-font-size) {
+    padding-bottom: @value;
+    padding-bottom: unit(unit(@value)/unit(@default-font-size),rem);
+}
+
+.padding-left-rem(@value, @default-font-size: @default-font-size) {
+    padding-left: @value;
+    padding-left: unit(unit(@value)/unit(@default-font-size),rem);
+}
+
+
+.padding-em(@value, @context-font-size: @default-font-size) {
+    @length: length(@value);
+    @default-value: unit(@context-font-size);
+ 
+    .inseption(@value) when (@length = 1) {
+        @em-value: unit(unit(extract(@value, 1))/@default-value,em);
+    .padding-inseption(@em-value)
+    }
+    .inseption(@value) when (@length = 2) {
+        @em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em);
+    .padding-inseption(@em-value)
+    }
+    .inseption(@value) when (@length = 3) {
+        @em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em) unit(unit(extract(@value, 3))/@default-value,em);
+    .padding-inseption(@em-value)
+    }
+    .inseption(@value) when (@length = 4) {
+        @em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em) unit(unit(extract(@value, 3))/@default-value,em) unit(unit(extract(@value, 4))/@default-value,em);
+    .padding-inseption(@em-value)
+    }
+ 
+    .padding-inseption(@value) {
+         padding: @value;
+    }
+    .inseption(@value);
+}
+
+.padding-top-em(@value, @context-font-size: @default-font-size) {
+    padding-top: unit(unit(@value)/unit(@context-font-size),em);
+}
+
+.padding-right-em(@value, @context-font-size: @default-font-size) {
+    padding-right: unit(unit(@value)/unit(@context-font-size),em);
+}
+
+.padding-bottom-em(@value, @context-font-size: @default-font-size) {
+    padding-bottom: unit(unit(@value)/unit(@context-font-size),em);
+}
+
+.padding-left-em(@value, @context-font-size: @default-font-size) {
+    padding-left: unit(unit(@value)/unit(@context-font-size),em);
+}

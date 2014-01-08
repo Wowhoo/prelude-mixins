@@ -1,0 +1,120 @@
+// Border Radius
+// ==========
+// Generates cross-browser-compatible `border-radius` for a given element
+// it adds background-clip: padding-box, because it fixes problem with older Safari. (http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed)
+//
+// Link: caniuse http://caniuse.com/border-radius
+// Link: spec http://www.w3.org/TR/css3-background/#the-border-radius
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+// 
+// Examples: 
+// .border-radius(20px 10px);
+// .border-radius(20px 10px, false);
+// .border-top-left-radius(0.5em);
+// .border-top-left-radius(0.5em, false);
+// .border-top-right-radius(0.5em);
+// .border-top-right-radius(0.5em, false);
+// .border-bottom-right-radius(0.5em);
+// .border-bottom-right-radius(0.5em, false);
+// .border-bottom-left-radius(0.5em);
+// .border-bottom-left-radius(0.5em, false);
+// .border-top-radius(0.5em);
+// .border-top-radius(0.5em, false);
+// .border-right-radius(0.5em);
+// .border-right-radius(0.5em, false);
+// .border-bottom-radius(0.5em);
+// .border-bottom-radius(0.5em, false);
+// .border-left-radius(0.5em);
+// .border-left-radius(0.5em, false);
+// -----------------------------------------------
+
+
+// Border Radius
+// --------------
+// Values: [ <length> | <percentage> ]{1,4}
+.border-radius(@radius, @with_clip: true) {
+  -webkit-border-radius: @radius;
+          border-radius: @radius;
+
+   .inception(@boolean) when (@boolean = true) {
+       .background-clip(padding-box);
+   }
+   .inception(@with_clip);
+}
+
+
+// Border top left radius
+// -------------------------
+// Values: <length> | <percentage>
+.border-top-left-radius(@radius, @with_clip: true) {
+  -webkit-border-top-left-radius: @radius;
+          border-top-left-radius: @radius;
+
+  .inception(@boolean) when (@boolean = true) {
+       .background-clip(padding-box);
+   }
+   .inception(@with_clip);
+}
+
+
+// Border top right radius
+// -------------------------
+// Values: <length> | <percentage>
+.border-top-right-radius(@radius, @with_clip: true) {
+  -webkit-border-top-right-radius: @radius;
+          border-top-right-radius: @radius;
+
+   .inception(@boolean) when (@boolean = true) {
+       .background-clip(padding-box);
+   }
+   .inception(@with_clip);
+}
+
+
+// Border bottom right radius
+// --------------------------
+// Values: <length> | <percentage>
+.border-bottom-right-radius(@radius, @with_clip: true) {
+  -webkit-border-bottom-right-radius: @radius;
+          border-bottom-right-radius: @radius;
+
+   .inception(@boolean) when (@boolean = true) {
+       .background-clip(padding-box);
+   }
+   .inception(@with_clip);
+}
+
+
+// Border bottom left radius
+// -------------------------
+// Values: <length> | <percentage>
+.border-bottom-left-radius(@radius, @with_clip: true) {
+  -webkit-border-bottom-left-radius: @radius;
+          border-bottom-left-radius: @radius;
+
+  .inception(@boolean) when (@boolean = true) {
+       .background-clip(padding-box);
+   }
+   .inception(@with_clip);
+}
+
+
+// Single Side Border Radius
+// -------------------------
+// Values: <length> | <percentage>
+.border-top-radius(@radius, @with_clip: true) {
+  .border-top-right-radius(@radius, @with_clip);
+  .border-top-left-radius(@radius, @with_clip);
+}
+.border-right-radius(@radius, @with_clip: true) {
+  .border-top-right-radius(@radius, @with_clip);
+  .border-bottom-right-radius(@radius, @with_clip);
+}
+.border-bottom-radius(@radius, @with_clip: true) {
+  .border-bottom-right-radius(@radius, @with_clip);
+  .border-bottom-left-radius(@radius, @with_clip);
+}
+.border-left-radius(@radius, @with_clip: true) {
+  .border-top-left-radius(@radius, @with_clip);
+  .border-bottom-left-radius(@radius, @with_clip);
+}

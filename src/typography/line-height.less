@@ -1,0 +1,24 @@
+
+.line-height(@size, @default-font-size: @default-font-size, @context-px-size: @default-font-size) {
+    .inception(@size) when (ispixel(@size)) {
+        @px-size: unit(@size);
+        @default-size: unit(@default-font-size);
+        @rem-size: (@px-size / @default-size);
+        line-height: ~"@{px-size}px";
+        line-height: ~"@{rem-size}rem";
+    }
+    .inception(@size) when (isem(@size)) {
+        @em-size: unit(@size);
+        @context-size: unit(@context-px-size);
+        @default-size: unit(@default-font-size);
+        @rem-size: (@em-size * @context-size / @default-size);
+        line-height: ~"@{em-size}em";
+        line-height: ~"@{rem-size}rem";
+    }
+    .inception(@size);
+}
+
+
+.line-height-em(@target-px-size, @context-px-size: @default-font-size) {
+	line-height: (unit(@target-px-size) / unit(@context-px-size)) * 1em;
+}

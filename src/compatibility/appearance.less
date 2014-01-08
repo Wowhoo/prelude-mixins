@@ -1,0 +1,23 @@
+// Appearance
+// ==========
+// Generates `appearance` for a given element
+//
+// Link: MDN https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance
+// Link: css-tricks http://css-tricks.com/almanac/properties/a/appearance/
+// Link: spec http://www.w3.org/TR/2004/CR-css3-ui-20040511/#appearance
+//
+// Examples: 
+// .appearance(button);
+// -----------------------------------------------
+
+
+// Appearance
+// ----------
+// Allows changing the style of any element to platform-based interface elements or vice versa.
+//
+// Values: normal | icon | window | button | menu | field
+.appearance (@value) {
+	-webkit-appearance: @value;
+	   -moz-appearance: @value;
+	        appearance: @value;
+}

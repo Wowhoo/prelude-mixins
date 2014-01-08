@@ -1,0 +1,92 @@
+.margin-rem(@value, @default-font-size: @default-font-size) {
+
+	@length: length(@value);
+	@default-value: unit(@default-font-size);
+ 
+	.inseption(@value) when (@length = 1) {
+		@rem-value: unit(unit(extract(@value, 1))/@default-value,rem);
+	.margin-inseption(@rem-value)
+	}
+	.inseption(@value) when (@length = 2) {
+		@rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem);
+	.margin-inseption(@rem-value)
+	}
+	.inseption(@value) when (@length = 3) {
+		@rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem) unit(unit(extract(@value, 3))/@default-value,rem);
+	.margin-inseption(@rem-value)
+	}
+	.inseption(@value) when (@length = 4) {
+		@rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem) unit(unit(extract(@value, 3))/@default-value,rem) unit(unit(extract(@value, 4))/@default-value,rem);
+	.margin-inseption(@rem-value)
+	}
+	.margin-inseption(@value) {
+		 margin: @value;
+	}
+ 
+	.margin-inseption(@value);
+	.inseption(@value);
+}
+
+.margin-top-rem(@value, @default-font-size: @default-font-size) {
+	margin-top: @value;
+	margin-top: unit(unit(@value)/unit(@default-font-size),rem);
+}
+
+.margin-right-rem(@value, @default-font-size: @default-font-size) {
+	margin-right: @value;
+	margin-right: unit(unit(@value)/unit(@default-font-size),rem);
+}
+
+.margin-bottom-rem(@value, @default-font-size: @default-font-size) {
+	margin-bottom: @value;
+	margin-bottom: unit(unit(@value)/unit(@default-font-size),rem);
+}
+
+.margin-left-rem(@value, @default-font-size: @default-font-size) {
+	margin-left: @value;
+	margin-left: unit(unit(@value)/unit(@default-font-size),rem);
+}
+
+
+.margin-em(@value, @context-font-size: @default-font-size) {
+	@length: length(@value);
+	@default-value: unit(@context-font-size);
+ 
+	.inseption(@value) when (@length = 1) {
+		@em-value: unit(unit(extract(@value, 1))/@default-value,em);
+	.margin-inseption(@em-value)
+	}
+	.inseption(@value) when (@length = 2) {
+		@em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em);
+	.margin-inseption(@em-value)
+	}
+	.inseption(@value) when (@length = 3) {
+		@em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em) unit(unit(extract(@value, 3))/@default-value,em);
+	.margin-inseption(@em-value)
+	}
+	.inseption(@value) when (@length = 4) {
+		@em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em) unit(unit(extract(@value, 3))/@default-value,em) unit(unit(extract(@value, 4))/@default-value,em);
+	.margin-inseption(@em-value)
+	}
+ 
+	.margin-inseption(@value) {
+		 margin: @value;
+	}
+	.inseption(@value);
+}
+
+.margin-top-em(@value, @context-font-size: @default-font-size) {
+    margin-top: unit(unit(@value)/unit(@context-font-size),em);
+}
+
+.margin-right-em(@value, @context-font-size: @default-font-size) {
+    margin-right: unit(unit(@value)/unit(@context-font-size),em);
+}
+
+.margin-bottom-em(@value, @context-font-size: @default-font-size) {
+    margin-bottom: unit(unit(@value)/unit(@context-font-size),em);
+}
+
+.margin-left-em(@value, @context-font-size: @default-font-size) {
+    margin-left: unit(unit(@value)/unit(@context-font-size),em);
+}

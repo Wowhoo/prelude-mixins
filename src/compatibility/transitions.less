@@ -1,0 +1,78 @@
+// Transitions
+// ==========
+// Link: caniuse http://caniuse.com/css-transitions
+// Link: spec http://www.w3.org/TR/css3-transitions
+//
+// Examples:
+// .transition(background 0.3s ease-in);
+// .transition(~"background 0.3s ease-in, box-shadow 0.2s linear");
+// .transition-property(all);
+// .transition-delay(2s);
+// .transition-delay(~"200ms, 2s");
+// .transition-duration(~"3s, 2s");
+// .transition-timing-function(ease-in-out);
+// -----------------------------------------------
+
+
+// Transition
+// ---------
+// Shorthand to define a CSS transition, setting all parameters at once.
+//
+// Values: none | <transition-property> <transition-duration> <transition-timing-function> <transition-delay>
+.transition(@transition) {
+  -webkit-transition: @transition;
+          transition: @transition;
+}
+
+
+// Transition property
+// --------------
+// The transition-property CSS property is used to specify the names of CSS properties to which a transition effect should be applied.
+//
+// Values: <propertyname> | all | none
+.transition-property(@transition-property) {
+  -webkit-transition-property: @transition-property;
+          transition-property: @transition-property;
+}
+
+
+// Transition duration
+// ------------------
+// The transition-duration CSS property specifies the number of seconds or milliseconds a transition animation should take to complete. By default, the value is 0s, meaning that no animation will occur.
+//
+// Values: <number>
+.transition-duration(@transition-duration) {
+  -webkit-transition-duration: @transition-duration;
+          transition-duration: @transition-duration;
+}
+
+
+// Transition timing function
+// -------------------------
+// The CSS transition-timing-function property is used to describe how the intermediate values of the CSS properties being affected by a transition effect are calculated. This in essence lets you establish an acceleration curve, so that the speed of the transition can vary over its duration.
+//
+// Values: linear | ease | ease-in | ease-out | ease-in-out | <cubic-bezier(n,n,n,n)>
+.transition-timing-function(@function: ease) {
+    -webkit-transition-timing-function: @function;
+    transition-timing-function: @function;
+}
+
+
+// Transition delay
+// ---------------
+// Defines a length of time to elapse before an transition starts, allowing an transition to begin execution some time after it is applied.
+//
+// Values: <number>
+.transition-delay(@transition-delay) {
+  -webkit-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
+}
+
+
+// Transform Transition
+// --------------------
+// @@@@@@@@@@@@@@@@@@@@
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+          transition: transform @transition;
+}

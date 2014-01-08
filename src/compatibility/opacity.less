@@ -1,0 +1,19 @@
+// Opacity
+// =======
+// The opacity CSS property specifies the transparency of an element, that is, the degree to which the background behind the element is overlaid.
+//
+// Link: caniuse http://caniuse.com/css-opacity
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
+//
+// Examples: 
+// .opacity(0.5);
+// -----------------------------------------------
+
+// Opacity
+// -------
+// Values: <number>
+.opacity(@opacity) {
+  opacity: @opacity;
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
+}

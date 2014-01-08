@@ -1,0 +1,79 @@
+// Multiple Columns
+// ================
+// Link: caniuse http://caniuse.com/multicolumn
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/columns
+//
+// Examples: 
+// .columns(100px 3);
+// .column-width(100px);
+// .column-count(3);
+// .column-gap(100px);
+// .column-rule(1px solid red);
+// .content-columns(2 100px);
+// -----------------------------------------------
+
+
+// Columns
+// -------
+// The columns CSS property is a shorthand property allowing to set both the column-width and the column-count properties at the same time.
+//
+// Values: <column-width> <column-count>
+.columns(@columns){
+    -webkit-columns: @columns;
+    -moz-columns: @columns;
+    columns: @columns;
+}
+
+
+// Column width
+// ------------
+// Values: <length> | auto
+.column-width(@width){
+    -webkit-column-width: @width;
+    -moz-column-width: @width;
+    column-width: @width;
+}
+
+
+// Column count
+// ------------
+// The column-count CSS property describes the number of columns of the element.
+//
+// Values: <number> | auto
+.column-count(@count) {
+    -webkit-column-count: @count;
+    -moz-column-count: @count;
+    column-count: @count;
+}
+
+
+// Column gap
+// ----------
+// The column-gap CSS property sets the size of the gap between columns for elements which are specified to display as a multi-column element.
+//
+// Values: <length> | normal
+.column-gap(@gap) {
+    -webkit-column-gap: @gap;
+    -moz-column-gap: @gap;
+    column-gap: @gap;
+}
+
+
+// Column rule
+// ------------
+// In multi-column layouts, the column-rule CSS property specifies a straight line, or "rule", to be drawn between each column.
+//
+// Values: <column-rule-width> <column-rule-style> <column-rule-color>
+.column-rule(@rule){
+    -webkit-column-rule: @rule;
+    -moz-column-rule: @rule;
+    column-rule: @rule;
+}
+
+
+// Content Columns
+// ---------------
+.content-columns(@column-count; @column-gap) {
+  .column-count(@column-count);
+  .column-gap(@column-gap);
+}

@@ -1,0 +1,24 @@
+// Box shadow
+// ==========
+// Generates cross-browser-compatible `box-shadow` for a given element
+//
+// Link: caniuse http://caniuse.com/css-boxshadow
+// Link: spec http://www.w3.org/TR/css3-background/#box-shadow
+// 
+// Examples: 
+// .box-shadow(5px 5px 10px 5px #aaa);
+// .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(0,0,0)");
+// -----------------------------------------------
+
+
+// Box shadow
+// ----------
+// Values: none | <inset> <offset-x> <offset-y> <blur> <spread> <color>
+.box-shadow(@args) when (isstring(@args)) {
+  -webkit-box-shadow: e(@args);
+          box-shadow: e(@args);
+}
+.box-shadow(@args) when not (isstring(@args)) {
+  -webkit-box-shadow: @args;
+          box-shadow: @args;
+}

@@ -1,0 +1,21 @@
+// Border Image
+// ============
+// Generates `border-image` for a given element
+//
+// Link: caniuse http://caniuse.com/border-image
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/border-image
+// Link: spec http://www.w3.org/TR/css3-background/#border-images
+// 
+// Examples: 
+// .border-image(url(border.png) 61 45 62 54 repeat);
+// -----------------------------------------------
+
+
+// Border image
+// ------------
+// Values: none | <source> <slice> <width> <outset> <repeat>;
+.border-image(@args) {
+  -webkit-border-image: @image;
+      -ms-border-image: @image;
+          border-image: @image;
+}

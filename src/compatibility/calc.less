@@ -1,0 +1,25 @@
+// Calc
+// ==========
+// Generates cross-browser-compatible `calc` for a given element
+//
+// Link: caniuse http://caniuse.com/calc
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+// 
+// Examples: 
+// .calc(width, ~'100% - 33px');
+// -----------------------------------------------
+
+
+// Calc
+// ----------
+// Values-first: width | height | padding | margin
+// values-second: px | em | rem | %
+
+.calc(@property, @value) { 
+    .inseption(@property, @value) {
+    @output: ~'0; @{property}: calc(@{value}); @{property}:-webkit-calc(@{value}); @{property}:-moz-calc(@{value})';
+    	-pl-property: @output;
+    }
+	
+	.inseption(@property, @value);
+}

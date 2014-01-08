@@ -1,0 +1,13 @@
+// .img-replace
+// .ir
+//
+// 用图片替换文字，通常用作icon的样式
+
+.img-replace(@img-url, @img-x: 0, @img-y: 0) {
+    .text-hide();
+    background: url(@img-url) no-repeat @img-x @img-y;
+}
+
+.ir(@img-url, @img-x: 0, @img-y: 0) {
+    .img-replace(@img-url, @img-x, @img-y);
+}

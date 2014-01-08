@@ -1,0 +1,24 @@
+// Placeholder
+// ==========
+// Placeholder is the short hint displayed in the input field before the user clicked to it. Default placeholder text in inputs has a light gray color (so far).
+//
+// Link: http://css-tricks.com/snippets/css/style-placeholder-text
+//
+// Examples: 
+// .placeholder(#666666);
+// -----------------------------------------------
+.placeholder(@color) {
+    &::-webkit-input-placeholder {
+        color: @color; // Chrome, Safari, Opera
+    }
+    &:-moz-placeholder {
+        color: @color;
+    }
+    &::-moz-placeholder {
+        color: @color; // Firefox 19+
+        opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+    }
+    &:-ms-input-placeholder {
+        color: @color; // IE 10+
+    }
+}

@@ -1,0 +1,62 @@
+// ==========================================================================
+// Shapes mixins
+// ==========================================================================
+
+// Examples:
+// .size(500px, 300px);
+// .size(100%);
+// .square(100%);
+// -----------------------------------------------
+.size(@width, @height: false) {
+    .size-inseption(@width, @height) {
+        width: @width;
+        height: @height;
+    }
+    .inseption(@width, @height) when not (@height = false) {
+        .size-inseption(@width, @height);
+    }
+    .inseption(@width, @height) when (@height = false) {
+        .size-inseption(@width, @width);
+    }
+    .inseption(@width, @height);
+}
+
+.square(@size) {
+  .size(@size, @size);
+}
+
+.circle(@size) {
+    .size(@size, @size);
+    -moz-border-radius: @size/2;
+    -webkit-border-radius: @size/2;
+    border-radius: @size/2;
+}
+
+.triangle(@direction, @size, @color) when (@direction = up) {
+    width: 0;
+    height: 0;
+    border-left: @size solid transparent;
+    border-right: @size solid transparent;
+    border-bottom: @size solid @color;
+}
+.triangle(@direction, @size, @color) when (@direction = down) {
+    width: 0;
+    height: 0;
+    border-left: @size solid transparent;
+    border-right: @size solid transparent;
+    border-top: @size solid @color;
+}
+.triangle(@direction, @size, @color) when (@direction = left) {
+    width: 0;
+    height: 0;
+    border-top: @size solid transparent;
+    border-bottom: @size solid transparent;
+    border-right: @size solid @color;
+}
+.triangle(@direction, @size, @color) when (@direction = right) {
+    width: 0;
+    height: 0;
+    border-top: @size solid transparent;
+    border-bottom: @size solid transparent;
+    border-left: @size solid @color;
+}

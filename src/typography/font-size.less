@@ -1,0 +1,87 @@
+/**
+ * @description
+ * This mixin will enable using the CSS3 value `rem`, which lets you define
+ * property-sizes based on the root-element's font-size.
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/rem
+ * @link spec http://www.w3.org/TR/css3-values/#relative0
+ *
+ * @param property
+ * @param value
+ * @param default-font-size {int} optional
+ * @returns
+ *   <property>: (<value> * <default-font-size>)px;
+ *   <property>: <value>;
+ *
+ * @example
+ *   .selector {
+ *     .rem(font-size, 1.3);
+ *   }
+ *
+ * Note: Depending on the font-size of the root-element `rem` calculates a
+ * property of a current element. The fallback solution excepts a
+ * `default-font-size`-argument which is 16px by default.
+ */
+.rem(@property, @value, @default-font-size: @default-font-size) {
+    @length: length(@value);
+    @default-value: unit(@default-font-size);
+
+    .inseption(@property, @value) when (@length = 1) {
+        @px-value: unit(unit(extract(@value, 1))*@default-value,px);
+    .property-inseption(@property, @px-value)
+    }
+    .inseption(@property, @value) when (@length = 2) {
+        @px-value: unit(unit(extract(@value, 1))*@default-value,px) unit(unit(extract(@value, 2))*@default-value,px);
+    .property-inseption(@property, @px-value)
+    }
+    .inseption(@property, @value) when (@length = 3) {
+        @px-value: unit(unit(extract(@value, 1))*@default-value,px) unit(unit(extract(@value, 2))*@default-value,px) unit(unit(extract(@value, 3))*@default-value,px);
+    .property-inseption(@property, @px-value)
+    }
+    .inseption(@property, @value) when (@length = 4) {
+        @px-value: unit(unit(extract(@value, 1))*@default-value,px) unit(unit(extract(@value, 2))*@default-value,px) unit(unit(extract(@value, 3))*@default-value,px) unit(unit(extract(@value, 4))*@default-value,px);
+    .property-inseption(@property, @px-value)
+    }
+
+    .property-inseption(@property, @px-value) {
+        @output: ~'0; @{property}: @{px-value}; @{property}: @{value}';
+        -pl-property: @output;
+    }
+    .inseption(@property, @value);
+}
+
+// @usage: .font-size(16px); // em|px|%
+.font-size(@size, @default-font-size: @default-font-size, @context-px-size: @default-font-size) {
+    .inception(@size) when (ispixel(@size)) {
+        @px-size: unit(@size);
+        @default-size: unit(@default-font-size);
+        @rem-size: (@px-size / @default-size);
+        font-size: ~"@{px-size}px";
+        font-size: ~"@{rem-size}rem";
+    }
+    .inception(@size) when (isem(@size)) {
+        @em-size: unit(@size);
+        @context-size: unit(@context-px-size);
+        @default-size: unit(@default-font-size);
+        @rem-size: (@em-size * @context-size / @default-size);
+        font-size: ~"@{em-size}em";
+        font-size: ~"@{rem-size}rem";
+    }
+    .inception(@size) when (ispercentage(@size)) {
+        font-size: @size;
+    }
+    .inception(@size);
+}
+
+// .font-size-em(14)
+// .font-size-em(14, 18)
+// .font-size-em(14px)
+// .font-size-em(14px, 18px)
+//
+// 用于辅助计算字体的em和rem值
+// https://github.com/clearleft/clearless/blob/master/mixins/typography.less
+.font-size-em(@target-px-size, @context-px-size: @default-font-size) {
+    font-size: unit(unit(@target-px-size) / unit(@context-px-size), em);
+}

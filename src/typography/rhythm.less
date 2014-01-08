@@ -1,0 +1,43 @@
+
+//      设置margin为 n*基础高度
+//      .rhythm-margin();           // 上下margin都为 1*基础高度
+//      .rhythm-margin(1);          // 上下margin都为 1*基础高度
+//      .rhythm-margin-top();       // 上margin都为 1*基础高度
+//      .rhythm-margin-top(2);      // 上margin都为 2*基础高度
+//      .rhythm-margin-bottom();    // 下margin都为 1*基础高度
+//      .rhythm-margin-bottom(2);   // 下margin都为 2*基础高度
+//      设置padding为 n*基础高度
+//      .rhythm-padding();          // 上下padding都为 1*基础高度
+//      .rhythm-padding(2);         // 上下padding都为 2*基础高度
+//      .rhythm-padding-top();      // 上padding都为 1*基础高度
+//      .rhythm-padding-top(2);     // 上padding都为 2*基础高度
+//      .rhythm-padding-bottom();   // 下padding都为 1*基础高度
+//      .rhythm-padding-bottom(2);  // 下padding都为 2*基础高度
+
+
+
+.rhythm-margin(@lines: 1) {
+    margin-top: (@rhythm-space * @lines);
+    margin-bottom: (@rhythm-space * @lines);
+}
+
+.rhythm-margin-top(@lines: 1) {
+    margin-top: (@rhythm-space * @lines);
+}
+
+.rhythm-margin-bottom(@lines: 1) {
+    margin-bottom: (@rhythm-space * @lines);
+}
+
+.rhythm-padding(@lines: 1) {
+    padding-top: (@rhythm-space * @lines);
+    padding-bottom: (@rhythm-space * @lines);
+}
+
+.rhythm-padding-top(@lines: 1) {
+    padding-top: (@rhythm-space * @lines);
+}
+
+.rhythm-padding-bottom(@lines: 1) {
+    padding-bottom: (@rhythm-space * @lines);
+}
