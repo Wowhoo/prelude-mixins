@@ -1,8 +1,16 @@
-// .img-replace
-// .ir
+// ==============
+// Image replace
+// ==============
+// Replace with images of text, usually used as the style of the icon
 //
-// 用图片替换文字，通常用作icon的样式
+// Examples:
+// .img-replace('./example.png');
+// .ir('./example.png');
+// -----------------------------------------------
 
+
+// Image replace
+// -------------
 .img-replace(@img-url, @img-x: 0, @img-y: 0) {
     .text-hide();
     background: url(@img-url) no-repeat @img-x @img-y;

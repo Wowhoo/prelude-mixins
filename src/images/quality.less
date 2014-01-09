@@ -1,9 +1,12 @@
+// ==========
+// Quality
+// ==========
+
 // When photos are upscaled or downscaled, they often get blurry. Don't use
 // this on flat color images, they will still appear blurry.
 // Use the +sharpen mixin instead.
 // @see https://developer.mozilla.org/en/CSS/image-rendering
 // ==========================================================================
-
 .high-quality() {
 	image-rendering:optimizeQuality;
 	-ms-interpolation-mode:bicubic;  /* IE 7+ */
@@ -12,7 +15,6 @@
 // Optimizes the rendering on images so they
 // appear faster, but at a lower quality. Useful for <video>
 // ==========================================================================
-
 .low-quality() {
 	image-rendering:optimizeSpeed;
 }
@@ -20,7 +22,6 @@
 // Retina images
 //
 // Short retina mixin for setting background-image and -size
-
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");
 
@@ -41,7 +42,6 @@
 // Useful mainly in flat color images
 // @see https://developer.mozilla.org/en/CSS/image-rendering
 // ==========================================================================
-
 .sharpen() {
   image-rendering:-moz-crisp-edges;
   -ms-interpolation-mode:nearest-neighbor;  /* IE 7+ */

@@ -1,4 +1,15 @@
+// =============
+// Line height
+// =============
+// Examples:
+// .line-height(16px);
+// .line-height(1em, 16px, 20px);
+// .line-height(15px, 20px);
+// -----------------------------------------------
 
+// Line height
+// ----------------
+// values: px | em
 .line-height(@size, @default-font-size: @default-font-size, @context-px-size: @default-font-size) {
     .inception(@size) when (ispixel(@size)) {
         @px-size: unit(@size);
@@ -18,7 +29,9 @@
     .inception(@size);
 }
 
-
+// .line-height-em
+// -------------------
+// According to the context switching unit into em
 .line-height-em(@target-px-size, @context-px-size: @default-font-size) {
-	line-height: (unit(@target-px-size) / unit(@context-px-size)) * 1em;
+	line-height: unit(unit(@target-px-size) / unit(@context-px-size), em);
 }

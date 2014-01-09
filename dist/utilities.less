@@ -1,20 +1,32 @@
+// TABLE OF MIXINS:
+        // center-block
+        // clearfix
+        // hidden
+        // margin
+        // padding
+        // resizable
+        // shapes
+        // tab-focus
+
+
+// =============
+// Center block
+// =============
 // Center-align a block level element
+// -----------------------------------------------
 .center-block() {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-// Clearfix
-// @see http://nicolasgallagher.com/micro-clearfix-hack/
-.mobile-clearfix() {
-  .clearfix();
-  &:last-child {
-    float: none;
-  }
-}
 
+
+// =========
 // Clearfix
-// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+// =========
+// 
+// Link http://nicolasgallagher.com/micro-clearfix-hack/
+// Link http://nicolasgallagher.com/micro-clearfix-hack/
 //
 // For modern browsers
 // 1. The space content is one way to avoid an Opera bug when the
@@ -23,6 +35,17 @@
 //    that are clearfixed.
 // 2. The use of `table` rather than `block` is only necessary if using
 //    `:before` to contain the top-margins of child elements.
+// -----------------------------------------------
+
+// clearfix
+// --------
+.mobile-clearfix() {
+  .clearfix();
+  &:last-child {
+    float: none;
+  }
+}
+
 .clearfix() {
   &:before,
   &:after {
@@ -36,9 +59,16 @@
 .clearfix() when (@support-old-ie) {
   *zoom: 1;
 }
-// hidden
-// ==========================================================================
+
+
+// ========
+// Hidden
+// ========
 // Hide from both screenreaders and browsers
+// -----------------------------------------------
+
+// Hidden
+// ------
 .hidden() {
   display: none !important;
   visibility: hidden;
@@ -66,6 +96,42 @@
       width: auto;
   }
 }
+
+
+// ==========
+// Margin
+// ==========
+// Generates `margin` for a given element
+//
+// Examples:
+// .margin-rem(10px);
+// .margin-rem(10px 15px);
+// .margin-rem(10px 15px 13px);
+// .margin-rem(10px 15px 13px 20px);
+// .margin-top-rem(10px);
+// .margin-right-rem(15px);
+// .margin-botom-rem(13px);
+// .margin-left-rem(20px);
+// .margin-em(10px);
+// .margin-em(10px, 20px);
+// .margin-em(10px 15px);
+// .margin-em(10px 15px, 20px);
+// .margin-em(10px 15px 13px);
+// .margin-em(10px 15px 13px, 20px);
+// .margin-em(10px 15px 13px 20px);
+// .margin-em(10px 15px 13px 20px, 20px);
+// .margin-top-em(10px);
+// .margin-top-em(10px, 20px);
+// .margin-right-em(15px);
+// .margin-right-em(15px, 20px);
+// .margin-botom-em(13px);
+// .margin-botom-em(13px, 20px);
+// .margin-left-em(20px);
+// .margin-left-em(20px, 20px);
+// -----------------------------------------------
+
+// Margin to rem
+// -------------------
 .margin-rem(@value, @default-font-size: @default-font-size) {
 
 	@length: length(@value);
@@ -115,7 +181,9 @@
 	margin-left: unit(unit(@value)/unit(@default-font-size),rem);
 }
 
-
+// Margin to em
+// --------------------
+// According to the context switching unit into em
 .margin-em(@value, @context-font-size: @default-font-size) {
 	@length: length(@value);
 	@default-value: unit(@context-font-size);
@@ -158,6 +226,43 @@
 .margin-left-em(@value, @context-font-size: @default-font-size) {
     margin-left: unit(unit(@value)/unit(@context-font-size),em);
 }
+
+
+// ==========
+// Padding
+// ==========
+// Generates `padding` for a given element
+//
+// Examples:
+// .padding-rem(10px);
+// .padding-rem(10px 15px);
+// .padding-rem(10px 15px 13px);
+// .padding-rem(10px 15px 13px 20px);
+// .padding-top-rem(10px);
+// .padding-right-rem(15px);
+// .padding-botom-rem(13px);
+// .padding-left-rem(20px);
+// .padding-em(10px);
+// .padding-em(10px, 20px);
+// .padding-em(10px 15px);
+// .padding-em(10px 15px, 20px);
+// .padding-em(10px 15px 13px);
+// .padding-em(10px 15px 13px, 20px);
+// .padding-em(10px 15px 13px 20px);
+// .padding-em(10px 15px 13px 20px, 20px);
+// .padding-top-em(10px);
+// .padding-top-em(10px, 20px);
+// .padding-right-em(15px);
+// .padding-right-em(15px, 20px);
+// .padding-botom-em(13px);
+// .padding-botom-em(13px, 20px);
+// .padding-left-em(20px);
+// .padding-left-em(20px, 20px);
+// -----------------------------------------------
+
+
+// Padding to rem
+// -----------------------
 .padding-rem(@value, @default-font-size: @default-font-size) {
 
     @length: length(@value);
@@ -208,6 +313,9 @@
 }
 
 
+// Padding to em
+// --------------------
+// According to the context switching unit into em
 .padding-em(@value, @context-font-size: @default-font-size) {
     @length: length(@value);
     @default-value: unit(@context-font-size);

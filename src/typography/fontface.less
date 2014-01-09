@@ -1,6 +1,14 @@
+// ===========
+// Font face
+// ===========
+// Examples:
 // .font-face(ubuntu, ~"../fonts/ubuntu");
 // .font-face(entypo, ~"../fonts/entypo", 400, normal, true);
 // -----------------------------------------------
+
+
+// Font face
+// ---------
 .font-face( @family-name, @font-path, @font-weight:normal, @font-style:normal, @include-svg:false ) when not (@include-svg) {
   @font-face {
       font-family: @family-name;

@@ -1,5 +1,16 @@
+// ===========
+// Resizable
+// ===========
 // Resize anything
+//
+// Example: 
+// .resizable(horizontal);
+// -----------------------------------------------
+
+// Resizable
+// ---------
+// value: horizontal | vertical | both
 .resizable(@direction) {
-  resize: @direction; // Options: horizontal, vertical, both
+  resize: @direction;
   overflow: auto; // Safari fix
 }

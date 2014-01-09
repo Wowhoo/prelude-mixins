@@ -1,12 +1,20 @@
-// ==========================================================================
+// ==============
 // Shapes mixins
-// ==========================================================================
-
+// ==============
+//
 // Examples:
 // .size(500px, 300px);
-// .size(100%);
 // .square(100%);
+// .circle(10px);
+// .triangle(up, 10px, #ccc);
+// .triangle(down, 10px, #ccc);
+// .triangle(right, 10px, #ccc);
+// .triangle(left, 10px, #ccc);
 // -----------------------------------------------
+
+// Size
+// ----
+// value: <length> | <percentage>
 .size(@width, @height: false) {
     .size-inseption(@width, @height) {
         width: @width;
@@ -21,10 +29,16 @@
     .inseption(@width, @height);
 }
 
+// Square
+// ------
+// value: <length> | <percentage>
 .square(@size) {
   .size(@size, @size);
 }
 
+// Circle
+// ------
+// value: <length> | <percentage>
 .circle(@size) {
     .size(@size, @size);
     -moz-border-radius: @size/2;
@@ -32,6 +46,9 @@
     border-radius: @size/2;
 }
 
+
+// Triangle
+// --------
 .triangle(@direction, @size, @color) when (@direction = up) {
     width: 0;
     height: 0;

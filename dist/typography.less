@@ -1,4 +1,21 @@
+// TABLE OF MIXINS:
+        // drop-cap
+        // ellipsis
+        // font-size
+        // fontface
+        // hyphens
+        // line-height
+        // rhythm
+        // smoothing
+        // text-hide
+
+
+// ==========
+// Drop cap
+// ==========
+// .drop-cap用于段落元素首字下沉，.drop-cap-inline用于行内元素整个下沉
 //
+// Examples:
 // .drop-cap(2)
 // .drop-cap(32px)
 // .drop-cap(2em)
@@ -12,10 +29,11 @@
 // .drop-cap-inline(200%)
 // .drop-cap-inline(32px, 3)
 // .drop-cap-inline(2, 3, 10px)
-//
-// 文字下沉
-// .drop-cap用于段落元素首字下沉，.drop-cap-inline用于行内元素整个下沉
+// -----------------------------------------------
 
+
+// Drop cap
+// --------
 .drop-cap-inline(...) when (@support-old-ie) {
     _display: inline;
 }
@@ -63,12 +81,22 @@
 .drop-cap(@line-height, @lines, @margin-right) when (@support-old-ie) {
     _zoom: 1;
 }
-//
-// .ellipsis
-// 
-// Known issue:
-// 指定参数（行数）的功能只支持WebKit。
 
+
+// =========
+// Ellipsis
+// =========
+// 省略号样式，当文字超过容器宽度时，超出部分文字隐藏并显示省略号。
+// 指定参数（行数）的功能只支持WebKit。
+//
+// Examples: 
+// .ellipsis();
+// .ellipsis(3);
+// -----------------------------------------------
+
+
+// Ellipsis
+// --------
 .ellipsis(...) {
     overflow: hidden;
 }
@@ -81,32 +109,36 @@
     -webkit-line-clamp: @line-number;
     -webkit-box-orient: vertical;  
 }
-/**
- * @description
- * This mixin will enable using the CSS3 value `rem`, which lets you define
- * property-sizes based on the root-element's font-size.
- *
- * @author drublic
- *
- * @link caniuse http://caniuse.com/rem
- * @link spec http://www.w3.org/TR/css3-values/#relative0
- *
- * @param property
- * @param value
- * @param default-font-size {int} optional
- * @returns
- *   <property>: (<value> * <default-font-size>)px;
- *   <property>: <value>;
- *
- * @example
- *   .selector {
- *     .rem(font-size, 1.3);
- *   }
- *
- * Note: Depending on the font-size of the root-element `rem` calculates a
- * property of a current element. The fallback solution excepts a
- * `default-font-size`-argument which is 16px by default.
- */
+
+
+// ============
+// Font-size
+// ============
+// This mixin will enable using the CSS3 value `rem`, which lets you define
+// property-sizes based on the root-element's font-size.
+//
+// Note: Depending on the font-size of the root-element `rem` calculates a
+// property of a current element. The fallback solution excepts a
+// `default-font-size`-argument which is 16px by default.
+//
+// @link caniuse http://caniuse.com/rem
+// @link spec http://www.w3.org/TR/css3-values/#relative0
+//
+// Examples:
+// .rem(margin, 1rem 1.5rem);
+// .font-size(16px);
+// .font-size(1em, 16px, 20px);
+// .font-size-em(14);
+// .font-size-em(14, 18);
+// .font-size-em(14px);
+// .font-size-em(14px, 18px);
+// -----------------------------------------------
+
+
+// .rem
+// -------
+// property: margin | padding | width | height
+// value: rem
 .rem(@property, @value, @default-font-size: @default-font-size) {
     @length: length(@value);
     @default-value: unit(@default-font-size);
@@ -135,7 +167,9 @@
     .inseption(@property, @value);
 }
 
-// @usage: .font-size(16px); // em|px|%
+// Font size
+// -----------------
+// value: px | em | %
 .font-size(@size, @default-font-size: @default-font-size, @context-px-size: @default-font-size) {
     .inception(@size) when (ispixel(@size)) {
         @px-size: unit(@size);
@@ -158,19 +192,25 @@
     .inception(@size);
 }
 
-// .font-size-em(14)
-// .font-size-em(14, 18)
-// .font-size-em(14px)
-// .font-size-em(14px, 18px)
-//
-// 用于辅助计算字体的em和rem值
-// https://github.com/clearleft/clearless/blob/master/mixins/typography.less
+// Font-size-em
+// ----------------
+// According to the context switching unit into em
 .font-size-em(@target-px-size, @context-px-size: @default-font-size) {
     font-size: unit(unit(@target-px-size) / unit(@context-px-size), em);
 }
+
+
+// ===========
+// Font face
+// ===========
+// Examples:
 // .font-face(ubuntu, ~"../fonts/ubuntu");
 // .font-face(entypo, ~"../fonts/entypo", 400, normal, true);
 // -----------------------------------------------
+
+
+// Font face
+// ---------
 .font-face( @family-name, @font-path, @font-weight:normal, @font-style:normal, @include-svg:false ) when not (@include-svg) {
   @font-face {
       font-family: @family-name;
@@ -195,6 +235,12 @@
       font-style: @font-style;
   }
 }
+
+
+// ============
+// Hyphens
+// ============
+
 // Optional hyphenation
 .hyphens(@mode: auto) {
   word-wrap: break-word;
@@ -204,7 +250,6 @@
        -o-hyphens: @mode;
           hyphens: @mode;
 }
-
 
 // Wrap words
 // force-wrap
@@ -217,6 +262,19 @@
   hyphens: auto;
 }
 
+
+// =============
+// Line height
+// =============
+// Examples:
+// .line-height(16px);
+// .line-height(1em, 16px, 20px);
+// .line-height(15px, 20px);
+// -----------------------------------------------
+
+// Line height
+// ----------------
+// values: px | em
 .line-height(@size, @default-font-size: @default-font-size, @context-px-size: @default-font-size) {
     .inception(@size) when (ispixel(@size)) {
         @px-size: unit(@size);
@@ -236,28 +294,37 @@
     .inception(@size);
 }
 
-
+// .line-height-em
+// -------------------
+// According to the context switching unit into em
 .line-height-em(@target-px-size, @context-px-size: @default-font-size) {
-	line-height: (unit(@target-px-size) / unit(@context-px-size)) * 1em;
+	line-height: unit(unit(@target-px-size) / unit(@context-px-size), em);
 }
 
-//      设置margin为 n*基础高度
-//      .rhythm-margin();           // 上下margin都为 1*基础高度
-//      .rhythm-margin(1);          // 上下margin都为 1*基础高度
-//      .rhythm-margin-top();       // 上margin都为 1*基础高度
-//      .rhythm-margin-top(2);      // 上margin都为 2*基础高度
-//      .rhythm-margin-bottom();    // 下margin都为 1*基础高度
-//      .rhythm-margin-bottom(2);   // 下margin都为 2*基础高度
-//      设置padding为 n*基础高度
-//      .rhythm-padding();          // 上下padding都为 1*基础高度
-//      .rhythm-padding(2);         // 上下padding都为 2*基础高度
-//      .rhythm-padding-top();      // 上padding都为 1*基础高度
-//      .rhythm-padding-top(2);     // 上padding都为 2*基础高度
-//      .rhythm-padding-bottom();   // 下padding都为 1*基础高度
-//      .rhythm-padding-bottom(2);  // 下padding都为 2*基础高度
+
+// ===========
+// Rhythm
+// ===========
+// Examples:
+// 设置margin为 n*基础高度
+// .rhythm-margin();           // 上下margin都为 1*基础高度
+// .rhythm-margin(1);          // 上下margin都为 1*基础高度
+// .rhythm-margin-top();       // 上margin都为 1*基础高度
+// .rhythm-margin-top(2);      // 上margin都为 2*基础高度
+// .rhythm-margin-bottom();    // 下margin都为 1*基础高度
+// .rhythm-margin-bottom(2);   // 下margin都为 2*基础高度
+// 设置padding为 n*基础高度
+// .rhythm-padding();          // 上下padding都为 1*基础高度
+// .rhythm-padding(2);         // 上下padding都为 2*基础高度
+// .rhythm-padding-top();      // 上padding都为 1*基础高度
+// .rhythm-padding-top(2);     // 上padding都为 2*基础高度
+// .rhythm-padding-bottom();   // 下padding都为 1*基础高度
+// .rhythm-padding-bottom(2);  // 下padding都为 2*基础高度
+// -----------------------------------------------
 
 
-
+// Rhythm 
+// ------
 .rhythm-margin(@lines: 1) {
     margin-top: (@rhythm-space * @lines);
     margin-bottom: (@rhythm-space * @lines);
@@ -284,21 +351,43 @@
     padding-bottom: (@rhythm-space * @lines);
 }
 
-    // @usage: .font-smoothing(off); off|antialiased|subpixel-antialiased
-    
-    .font-smoothing(@var: subpixel-antialiased) {
-        .inseption(@var) when not (@var = subpixel-antialiased) {
-             -webkit-font-smoothing: @var;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .inseption(@var) when (@var = subpixel-antialiased) {
-             -webkit-font-smoothing: @var;
-            -moz-osx-font-smoothing: auto;
-        }
-        .inseption(@var);
+
+// ===============
+// Font smoothing
+// ===============
+// Example:
+// .font-smoothing(off);
+// -----------------------------------------------
+
+// Font-smoothing
+// ------------------
+// value: off | antialiased | subpixel-antialiased
+.font-smoothing(@var: subpixel-antialiased) {
+    .inseption(@var) when not (@var = subpixel-antialiased) {
+         -webkit-font-smoothing: @var;
+        -moz-osx-font-smoothing: grayscale;
     }
+    .inseption(@var) when (@var = subpixel-antialiased) {
+         -webkit-font-smoothing: @var;
+        -moz-osx-font-smoothing: auto;
+    }
+    .inseption(@var);
+}
+
+
+// ============
+// Text hide
+// ============
 // Image Replacement
-// ==========================================================================
+//
+// Link: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757c9e03dda4e463fb0d4db5a5f82d7#commitcomment-1052728
+// Link: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+// 
+// -----------------------------------------------
+
+
+// .text-hide
+// ------------------------
 .text-hide() {
   font: ~"0/0" a;
   color: transparent;
@@ -307,19 +396,8 @@
   border: 0;
 }
 
-
-
-
-
-//
 // .hide-text
-//
-// 隐藏文字
-// http://jsfiddle.net/necolas/drHaR/2/
-// https://github.com/twitter/bootstrap/issues/2362
-// https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757c9e03dda4e463fb0d4db5a5f82d7#commitcomment-1052728
-// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
-
+// ------------------------
 .hide-text() when not (@support-old-ie) {
     white-space: nowrap;
     text-indent: 100%;

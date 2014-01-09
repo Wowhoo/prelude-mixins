@@ -1,6 +1,15 @@
-// Background-image
-// ==========
-// Generates `background-image` for a given element
+// TABLE OF MIXINS:
+        // gradients
+        // quality
+        // replace
+        // responsive
+        // sprite
+
+
+// =================
+// Gradient
+// =================
+// Generates `gradient` for a given element
 //
 // Link: caniuse http://caniuse.com/background-image
 // Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
@@ -107,12 +116,17 @@
 .reset-filter() {
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 }
+
+
+// ==========
+// Quality
+// ==========
+
 // When photos are upscaled or downscaled, they often get blurry. Don't use
 // this on flat color images, they will still appear blurry.
 // Use the +sharpen mixin instead.
 // @see https://developer.mozilla.org/en/CSS/image-rendering
 // ==========================================================================
-
 .high-quality() {
 	image-rendering:optimizeQuality;
 	-ms-interpolation-mode:bicubic;  /* IE 7+ */
@@ -121,7 +135,6 @@
 // Optimizes the rendering on images so they
 // appear faster, but at a lower quality. Useful for <video>
 // ==========================================================================
-
 .low-quality() {
 	image-rendering:optimizeSpeed;
 }
@@ -129,7 +142,6 @@
 // Retina images
 //
 // Short retina mixin for setting background-image and -size
-
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");
 
@@ -150,16 +162,25 @@
 // Useful mainly in flat color images
 // @see https://developer.mozilla.org/en/CSS/image-rendering
 // ==========================================================================
-
 .sharpen() {
   image-rendering:-moz-crisp-edges;
   -ms-interpolation-mode:nearest-neighbor;  /* IE 7+ */
 }
-// .img-replace
-// .ir
-//
-// 用图片替换文字，通常用作icon的样式
 
+
+// ==============
+// Image replace
+// ==============
+// Replace with images of text, usually used as the style of the icon
+//
+// Examples:
+// .img-replace('./example.png');
+// .ir('./example.png');
+// -----------------------------------------------
+
+
+// Image replace
+// -------------
 .img-replace(@img-url, @img-x: 0, @img-y: 0) {
     .text-hide();
     background: url(@img-url) no-repeat @img-x @img-y;
@@ -168,64 +189,77 @@
 .ir(@img-url, @img-x: 0, @img-y: 0) {
     .img-replace(@img-url, @img-x, @img-y);
 }
-// Responsive image
-//
-// Keep images from scaling beyond the width of their parents.
 
+
+// =================
+// Responsive image
+//==================
+// Keep images from scaling beyond the width of their parents.
+// -----------------------------------------------
+
+
+// Responsive image
+// ----------------
 .img-responsive(@display: block) {
   display: @display;
   max-width: 100%; // Part 1: Set a maximum relative to the parent
   height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
 }
+
+
+// ==========
 // Sprite
 // ==========
 //
 // Examples:
-// 
+// .sprite(1, 1, '/example.png');
+// .sprite(1, 1, '/example.png', 20px);
+// .sprite-sized(1, 1, 10px, '/example.png');
+// .sprite-sized(1, 1, 10px, '/example.png', 20px);
+// .sprite-sized(1, 1, 10px, 15px, '/example.png');
+// .sprite-sized(1, 1, 10px, 15px, '/example.png', 20px);
+// .sprite-image('/example.png');
+// .sprite-pos(1, 1);
+// .sprite-pos(1, 1, 20px);
+// .sprite-pos-sized(1, 1, 10px, '/example.png');
+// .sprite-pos-sized(1, 1, 10px, '/example.png', 20px);
+// .sprite-pos-sized(1, 1, 10px, 15px, '/example.png');
+// .sprite-pos-sized(1, 1, 10px, 15px, '/example.png', 20px);
 // -----------------------------------------------
 
-.sprite(@x, @y, @sprite-image:@sprite-image, @sprite-grid:@sprite-grid) {
+
+// Sprite
+// ------
+.sprite(@x, @y, @sprite-image, @sprite-grid:@sprite-grid) {
 	.sprite-image(@sprite-image);
 	.sprite-pos(@x, @y, @sprite-grid);
 }
 
-.sprite-sized(@x, @y, @size, @sprite-image:@sprite-image, @sprite-grid:@sprite-grid) when not (isnumber(@sprite-image)) {
+.sprite-sized(@x, @y, @size, @sprite-image, @sprite-grid:@sprite-grid) when not (isnumber(@sprite-image)) {
 	.sprite(@x, @y, @sprite-image, @sprite-grid);
 	.size(@size);
 }
 
-.sprite-sized(@x, @y, @width, @height, @sprite-image:@sprite-image, @sprite-grid:@sprite-grid) when (isnumber(@height)) {
+.sprite-sized(@x, @y, @width, @height, @sprite-image, @sprite-grid:@sprite-grid) when (isnumber(@height)) {
 	.sprite(@x, @y, @sprite-image, @sprite-grid);
 	.size(@width,@height);
 }
 
-.sprite-ir(@x, @y, @size, @sprite-image:@sprite-image, @sprite-grid:@sprite-grid) when not (isnumber(@sprite-image)) {
-	.ir();
-	.sprite(@x, @y, @sprite-image, @sprite-grid);
-	.size(@size);
-}
-
-.sprite-ir(@x, @y, @width, @height, @sprite-image:@sprite-image, @sprite-grid:@sprite-grid) when (isnumber(@height)) {
-	.ir();
-	.sprite(@x, @y, @sprite-image, @sprite-grid);
-	.size(@width,@height);
-}
-
-.sprite-image(@sprite-image:@sprite-image) {
+.sprite-image(@sprite-image) {
 	background-image: url(@sprite-image);
 	background-repeat: no-repeat;
 }
 
 .sprite-pos(@x, @y, @sprite-grid:@sprite-grid) {
-	background-position: -(@x*@sprite-grid*1px)  -(@y*@sprite-grid*1px);
+	background-position: -(unit(@x*unit(@sprite-grid),px))  -(unit(@y*unit(@sprite-grid),px));
 }
 
-.sprite-pos-sized(@x, @y, @size, @sprite-grid:@sprite-grid) when not (isnumber(@sprite-image)) {
+.sprite-pos-sized(@x, @y, @size, @sprite-image, @sprite-grid:@sprite-grid) when not (isnumber(@sprite-image)) {
 	.sprite-pos(@x, @y, @sprite-grid);
 	.size(@size);
 }
 
-.sprite-pos-sized(@x, @y, @width, @height, @sprite-grid:@sprite-grid) when (isnumber(@height)) {
+.sprite-pos-sized(@x, @y, @width, @height, @sprite-image, @sprite-grid:@sprite-grid) when (isnumber(@height)) {
 	.sprite-pos(@x, @y, @sprite-grid);
 	.size(@width,@height);
 }

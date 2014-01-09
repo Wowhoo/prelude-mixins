@@ -1,3 +1,38 @@
+// ==========
+// Padding
+// ==========
+// Generates `padding` for a given element
+//
+// Examples:
+// .padding-rem(10px);
+// .padding-rem(10px 15px);
+// .padding-rem(10px 15px 13px);
+// .padding-rem(10px 15px 13px 20px);
+// .padding-top-rem(10px);
+// .padding-right-rem(15px);
+// .padding-botom-rem(13px);
+// .padding-left-rem(20px);
+// .padding-em(10px);
+// .padding-em(10px, 20px);
+// .padding-em(10px 15px);
+// .padding-em(10px 15px, 20px);
+// .padding-em(10px 15px 13px);
+// .padding-em(10px 15px 13px, 20px);
+// .padding-em(10px 15px 13px 20px);
+// .padding-em(10px 15px 13px 20px, 20px);
+// .padding-top-em(10px);
+// .padding-top-em(10px, 20px);
+// .padding-right-em(15px);
+// .padding-right-em(15px, 20px);
+// .padding-botom-em(13px);
+// .padding-botom-em(13px, 20px);
+// .padding-left-em(20px);
+// .padding-left-em(20px, 20px);
+// -----------------------------------------------
+
+
+// Padding to rem
+// -----------------------
 .padding-rem(@value, @default-font-size: @default-font-size) {
 
     @length: length(@value);
@@ -48,6 +83,9 @@
 }
 
 
+// Padding to em
+// --------------------
+// According to the context switching unit into em
 .padding-em(@value, @context-font-size: @default-font-size) {
     @length: length(@value);
     @default-value: unit(@context-font-size);

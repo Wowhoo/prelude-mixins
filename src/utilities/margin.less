@@ -1,3 +1,37 @@
+// ==========
+// Margin
+// ==========
+// Generates `margin` for a given element
+//
+// Examples:
+// .margin-rem(10px);
+// .margin-rem(10px 15px);
+// .margin-rem(10px 15px 13px);
+// .margin-rem(10px 15px 13px 20px);
+// .margin-top-rem(10px);
+// .margin-right-rem(15px);
+// .margin-botom-rem(13px);
+// .margin-left-rem(20px);
+// .margin-em(10px);
+// .margin-em(10px, 20px);
+// .margin-em(10px 15px);
+// .margin-em(10px 15px, 20px);
+// .margin-em(10px 15px 13px);
+// .margin-em(10px 15px 13px, 20px);
+// .margin-em(10px 15px 13px 20px);
+// .margin-em(10px 15px 13px 20px, 20px);
+// .margin-top-em(10px);
+// .margin-top-em(10px, 20px);
+// .margin-right-em(15px);
+// .margin-right-em(15px, 20px);
+// .margin-botom-em(13px);
+// .margin-botom-em(13px, 20px);
+// .margin-left-em(20px);
+// .margin-left-em(20px, 20px);
+// -----------------------------------------------
+
+// Margin to rem
+// -------------------
 .margin-rem(@value, @default-font-size: @default-font-size) {
 
 	@length: length(@value);
@@ -47,7 +81,9 @@
 	margin-left: unit(unit(@value)/unit(@default-font-size),rem);
 }
 
-
+// Margin to em
+// --------------------
+// According to the context switching unit into em
 .margin-em(@value, @context-font-size: @default-font-size) {
 	@length: length(@value);
 	@default-value: unit(@context-font-size);

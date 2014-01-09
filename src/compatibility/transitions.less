@@ -1,5 +1,6 @@
-// Transitions
-// ==========
+// ===========
+// Transition
+// ===========
 // Link: caniuse http://caniuse.com/css-transitions
 // Link: spec http://www.w3.org/TR/css3-transitions
 //
@@ -7,15 +8,15 @@
 // .transition(background 0.3s ease-in);
 // .transition(~"background 0.3s ease-in, box-shadow 0.2s linear");
 // .transition-property(all);
-// .transition-delay(2s);
-// .transition-delay(~"200ms, 2s");
 // .transition-duration(~"3s, 2s");
 // .transition-timing-function(ease-in-out);
+// .transition-delay(2s);
+// .transition-delay(~"200ms, 2s");
 // -----------------------------------------------
 
 
 // Transition
-// ---------
+// ----------
 // Shorthand to define a CSS transition, setting all parameters at once.
 //
 // Values: none | <transition-property> <transition-duration> <transition-timing-function> <transition-delay>
@@ -66,13 +67,4 @@
 .transition-delay(@transition-delay) {
   -webkit-transition-delay: @transition-delay;
           transition-delay: @transition-delay;
-}
-
-
-// Transform Transition
-// --------------------
-// @@@@@@@@@@@@@@@@@@@@
-.transition-transform(@transition) {
-  -webkit-transition: -webkit-transform @transition;
-          transition: transform @transition;
 }

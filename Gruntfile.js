@@ -13,10 +13,11 @@ module.exports = function(grunt) {
         },
         concat: {
             options: {
-                separator: '\n',
+                separator: '\n\n\n',
             },
             compatibility: {
-                src: [ 'src/compatibility/animations.less',
+                src: [ 'src/compatibility/table.less',
+                       'src/compatibility/animations.less',
                        'src/compatibility/appearance.less',
                        'src/compatibility/backgrounds.less',
                        'src/compatibility/border-image.less',
@@ -40,7 +41,8 @@ module.exports = function(grunt) {
                 dest: 'dist/compatibility.less',
             },
             images: {
-                src: [ 'src/images/gradients.less',
+                src: [ 'src/images/table.less',
+                       'src/images/gradients.less',
                        'src/images/quality.less',
                        'src/images/replace.less',
                        'src/images/responsive.less',
@@ -49,7 +51,8 @@ module.exports = function(grunt) {
                 dest: 'dist/images.less',
             },
             typography: {
-                src: [ 'src/typography/drop-cap.less',
+                src: [ 'src/typography/table.less',
+                       'src/typography/drop-cap.less',
                        'src/typography/ellipsis.less',
                        'src/typography/font-size.less',
                        'src/typography/fontface.less',
@@ -62,7 +65,8 @@ module.exports = function(grunt) {
                 dest: 'dist/typography.less',
             },
             utilities: {
-                src: [ 'src/utilities/center-block.less',
+                src: [ 'src/utilities/table.less',
+                       'src/utilities/center-block.less',
                        'src/utilities/clearfix.less',
                        'src/utilities/hidden.less',
                        'src/utilities/margin.less',
@@ -77,6 +81,18 @@ module.exports = function(grunt) {
               src: 'src/variables.less',
               dest: 'dist/variables.less',
             }
+        },
+        lessimportfile: {
+          options: {},
+          files: {
+            src: [  'dist/variables.less',
+                    'dist/compatibility.less',
+                    'dist/images.less',
+                    'dist/typography.less',
+                    'dist/utilities.less'
+                  ],
+            dest: 'dist/prelude-mixins.less',
+          },
         },
         jsbeautifier: {
             files: ["Gruntfile.js"],
@@ -102,10 +118,11 @@ module.exports = function(grunt) {
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-lessimportfile');
     grunt.loadNpmTasks('grunt-jsbeautifier');
 
     // Default task.
-    grunt.registerTask('default', ['clean', 'concat']);
+    grunt.registerTask('default', ['clean', 'concat', 'lessimportfile']);
 
     grunt.registerTask('js', ['jsbeautifier']);
 };

@@ -1,5 +1,29 @@
+// TABLE OF MIXINS:
+        // animations
+        // appearance
+        // backgrounds
+        // border-image
+        // border-radius
+        // box-shadow
+        // box-sizing
+        // calc
+        // columns
+        // filters
+        // flex
+        // inline-block
+        // keyframes
+        // opacity
+        // placeholder
+        // scrollbar
+        // tab-size
+        // transform
+        // transitions
+        // user-select
+
+
+// ===========
 // Animations
-// ==========
+// ===========
 // Generates `animation` for a given element
 //
 // Link: caniuse http://caniuse.com/css-animation
@@ -8,15 +32,15 @@
 // Examples:
 // .animation(my-animation 6s backwards 2s);
 // .animation(~"my-animation 6s backwards 2s, my-second-animation 3s linear alternate infinite");
+// .animation-name(myanimation);
+// .animation-duration(~"3s, 2s");
+// .animation-timing-function(ease-in-out);
 // .animation-delay(2s);
 // .animation-delay(~"200ms, 2s");
+// .animation-iteration-count(3);
 // .animation-direction(alternate);
 // .animation-direction(~"normal, alternate");
-// .animation-duration(~"3s, 2s");
 // .animation-fill-mode(forwards);
-// .animation-timing-function(ease-in-out);
-// .animation-iteration-count(3);
-// .animation-name(myanimation);
 // .animation-play-state(paused);
 // -----------------------------------------------
 
@@ -53,7 +77,6 @@
     -ms-animation-duration: @duration;
     animation-duration: @duration;
 }
-
 
 // Animation timing function
 // -------------------------
@@ -125,8 +148,11 @@
     -ms-animation-play-state: @state;
     animation-play-state: @state;
 }
+
+
+// ===========
 // Appearance
-// ==========
+// ===========
 // Generates `appearance` for a given element
 //
 // Link: MDN https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance
@@ -148,8 +174,11 @@
 	   -moz-appearance: @value;
 	        appearance: @value;
 }
+
+
+// ============
 // Backgrounds
-// ===========
+// ============
 // Generates `background` for a given element
 //
 // Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
@@ -204,8 +233,11 @@
      -moz-background-size: @size;
           background-size: @size;
 }
+
+
+// =============
 // Border Image
-// ============
+// =============
 // Generates `border-image` for a given element
 //
 // Link: caniuse http://caniuse.com/border-image
@@ -220,13 +252,16 @@
 // Border image
 // ------------
 // Values: none | <source> <slice> <width> <outset> <repeat>;
-.border-image(@args) {
+.border-image(@image) {
   -webkit-border-image: @image;
       -ms-border-image: @image;
           border-image: @image;
 }
+
+
+// ==============
 // Border Radius
-// ==========
+// ==============
 // Generates cross-browser-compatible `border-radius` for a given element
 // it adds background-clip: padding-box, because it fixes problem with older Safari. (http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed)
 //
@@ -269,7 +304,6 @@
    .inception(@with_clip);
 }
 
-
 // Border top left radius
 // -------------------------
 // Values: <length> | <percentage>
@@ -282,7 +316,6 @@
    }
    .inception(@with_clip);
 }
-
 
 // Border top right radius
 // -------------------------
@@ -297,7 +330,6 @@
    .inception(@with_clip);
 }
 
-
 // Border bottom right radius
 // --------------------------
 // Values: <length> | <percentage>
@@ -311,7 +343,6 @@
    .inception(@with_clip);
 }
 
-
 // Border bottom left radius
 // -------------------------
 // Values: <length> | <percentage>
@@ -324,7 +355,6 @@
    }
    .inception(@with_clip);
 }
-
 
 // Single Side Border Radius
 // -------------------------
@@ -345,6 +375,9 @@
   .border-top-left-radius(@radius, @with_clip);
   .border-bottom-left-radius(@radius, @with_clip);
 }
+
+
+// ==========
 // Calc
 // ==========
 // Generates cross-browser-compatible `calc` for a given element
@@ -359,19 +392,21 @@
 
 // Calc
 // ----------
-// Values-first: width | height | padding | margin
-// values-second: px | em | rem | %
-
+// property: width | height | padding | margin
+// value: px | em | rem | percentage
 .calc(@property, @value) { 
-    .inseption(@property, @value) {
-    @output: ~'0; @{property}: calc(@{value}); @{property}:-webkit-calc(@{value}); @{property}:-moz-calc(@{value})';
-    	-pl-property: @output;
-    }
+	.inseption(@property, @value) {
+	@output: ~'0; @{property}: calc(@{value}); @{property}:-webkit-calc(@{value}); @{property}:-moz-calc(@{value})';
+		-pl-property: @output;
+	}
 	
 	.inseption(@property, @value);
 }
+
+
+// =================
 // Multiple Columns
-// ================
+// =================
 // Link: caniuse http://caniuse.com/multicolumn
 // Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/columns
 //
@@ -396,7 +431,6 @@
     columns: @columns;
 }
 
-
 // Column width
 // ------------
 // Values: <length> | auto
@@ -405,7 +439,6 @@
     -moz-column-width: @width;
     column-width: @width;
 }
-
 
 // Column count
 // ------------
@@ -418,7 +451,6 @@
     column-count: @count;
 }
 
-
 // Column gap
 // ----------
 // The column-gap CSS property sets the size of the gap between columns for elements which are specified to display as a multi-column element.
@@ -429,7 +461,6 @@
     -moz-column-gap: @gap;
     column-gap: @gap;
 }
-
 
 // Column rule
 // ------------
@@ -442,14 +473,16 @@
     column-rule: @rule;
 }
 
-
 // Content Columns
 // ---------------
 .content-columns(@column-count; @column-gap) {
   .column-count(@column-count);
   .column-gap(@column-gap);
 }
-// filter
+
+
+// ==========
+// Filter
 // ==========
 // Generates cross-browser-compatible `filter` for a given element
 //
@@ -461,8 +494,8 @@
 // -----------------------------------------------
 
 
-// filter
-// ----------
+// Filter
+// ------
 // Values: blur | brightness | contrast | drop-shadow | grayscale | hue-rotate | invert | sepia
 .filter(@filter: grayscale(100%)) {
 	-webkit-filter: @filter;
@@ -470,8 +503,11 @@
 	-ms-filter: @filter;
 	filter: @filter;
 }
+
+
+// =========
 // FlexLess
-// ========
+// =========
 // https://github.com/codio/Flex.less
 // -----------------------------------------------
 
@@ -482,13 +518,13 @@
 // Property Name: display
 // Values: flex | inline-flex
 .display(@value: flex) when (@value = flex) {
-    display: -moz-box;              // Mozilla Old
     display: -webkit-box;           // Webkit Old
+    display: -moz-box;              // Mozilla Old
 }
 
 .display(@value: flex) when (@value = inline-flex) {
-    display: -moz-inline-box;       // Mozilla Old
     display: -webkit-inline-box;    // Webkit Old
+    display: -moz-inline-box;       // Mozilla Old
 }
 
 .display(@value: flex) {
@@ -541,6 +577,7 @@
             justify-content: @value;  // Standard
 }
 
+
 // Cross Axis Alignment
 // --------------------
 //
@@ -571,7 +608,6 @@
         -ms-align-items: @value;  // IE 11 Standard
             align-items: @value;  // Standard
 }
-
 
 
 // Individual Cross-Axis Alignment
@@ -632,7 +668,6 @@
 }
 
 
-
 // Display Order
 // -------------
 //
@@ -662,7 +697,6 @@
            -ms-flex: @arguments;    // IE 10 Mid, IE 11 Standard
                flex: @arguments;    // Standard
 }
-
 
 // Longhand - Flex Grow
 // --------------------
@@ -701,7 +735,6 @@
 }
 
 
-
 // Direction
 // ---------
 //
@@ -736,7 +769,6 @@
 }
 
 
-
 // Old Properties
 // --------------
 .box-direction(@value) {
@@ -748,7 +780,6 @@
     -webkit-box-orient: @value;       // Webkit Old
        -moz-box-orient: @value;       // Mozilla Old
 }
-
 
 
 // Wrapping
@@ -785,10 +816,12 @@
         -ms-flex-flow: @arguments;    // IE 10 Mid, IE 11 Standard
             flex-flow: @arguments;
 }
+
+
 // inline-block
 // ==========
 // 
-// Examples: 
+// Examples:
 // .inline-block();
 // -----------------------------------------------
 
@@ -801,8 +834,11 @@
     *display: inline;
     *zoom: 1;
 }
-// keyframes
-// ================
+
+
+// ==========
+// Keyframes
+// ==========
 // https://github.com/thybzi/keyframes
 //
 // Examples: 
@@ -826,7 +862,9 @@
 // }
 // -----------------------------------------------
 
-    
+
+// Keyframes
+// ---------
 .keyframes(
     @name,        @point1:  0%, @point2: 100%,
     @point3:  '', @point4:  '', @point5:  '', @point6:  '', @point7:  '', @point8:  '', @point9:  '',
@@ -881,8 +919,11 @@
     @globalEndString: ~'@{bracketClose}x:not(x)';
     @{globalEndString} { content: ''; }
 }
+
+
+// ========
 // Opacity
-// =======
+// ========
 // The opacity CSS property specifies the transparency of an element, that is, the degree to which the background behind the element is overlaid.
 //
 // Link: caniuse http://caniuse.com/css-opacity
@@ -900,8 +941,11 @@
   @opacity-ie: (@opacity * 100);
   filter: ~"alpha(opacity=@{opacity-ie})";
 }
+
+
+// ============
 // Placeholder
-// ==========
+// ============
 // Placeholder is the short hint displayed in the input field before the user clicked to it. Default placeholder text in inputs has a light gray color (so far).
 //
 // Link: http://css-tricks.com/snippets/css/style-placeholder-text
@@ -909,6 +953,10 @@
 // Examples: 
 // .placeholder(#666666);
 // -----------------------------------------------
+
+// Placeholder
+// -----------
+// value: alpha | rgba
 .placeholder(@color) {
     &::-webkit-input-placeholder {
         color: @color; // Chrome, Safari, Opera
@@ -924,6 +972,9 @@
         color: @color; // IE 10+
     }
 }
+
+
+// ==========
 // Scrollbar
 // ==========
 // Placeholder is the short hint displayed in the input field before the user clicked to it. Default placeholder text in inputs has a light gray color (so far).
@@ -933,6 +984,10 @@
 // Examples: 
 // .scrollbar(rgba(0, 0, 0, 0.2), 10px);
 // -----------------------------------------------
+
+
+// Scrollbar
+// ---------
 .scrollbar (@color: rgba(0, 0, 0, 0.2), @width: 7px, @height: 9px, @radius: 4px) {
   overflow: auto;
 
@@ -966,8 +1021,11 @@
     border-radius: @radius;
   }
 }
+
+
+// =========
 // Tab Size
-// ========
+// =========
 // Generates cross-browser-compatible `tab-size` output
 //
 // Link: caniuse http://caniuse.com/css3-tabsize
@@ -989,8 +1047,11 @@
 	  -o-tab-size: @value;
 	     tab-size: @value;
 }
+
+
+// ===========
 // Transforms
-// ==========
+// ===========
 // Generates cross-browser-compatible `transform` for a given element
 //
 // link caniuse http://caniuse.com/transforms2d http://caniuse.com/transforms3d
@@ -1180,8 +1241,11 @@
   @var: rotateZ(@z);
   .transform(@var);
 }
-// Transitions
-// ==========
+
+
+// ===========
+// Transition
+// ===========
 // Link: caniuse http://caniuse.com/css-transitions
 // Link: spec http://www.w3.org/TR/css3-transitions
 //
@@ -1189,15 +1253,15 @@
 // .transition(background 0.3s ease-in);
 // .transition(~"background 0.3s ease-in, box-shadow 0.2s linear");
 // .transition-property(all);
-// .transition-delay(2s);
-// .transition-delay(~"200ms, 2s");
 // .transition-duration(~"3s, 2s");
 // .transition-timing-function(ease-in-out);
+// .transition-delay(2s);
+// .transition-delay(~"200ms, 2s");
 // -----------------------------------------------
 
 
 // Transition
-// ---------
+// ----------
 // Shorthand to define a CSS transition, setting all parameters at once.
 //
 // Values: none | <transition-property> <transition-duration> <transition-timing-function> <transition-delay>
@@ -1251,15 +1315,9 @@
 }
 
 
-// Transform Transition
-// --------------------
-// @@@@@@@@@@@@@@@@@@@@
-.transition-transform(@transition) {
-  -webkit-transition: -webkit-transform @transition;
-          transition: transform @transition;
-}
+// ============
 // User select
-// =======
+// ============
 // Disables selection of content of a given element
 //
 // Link: caniuse http://caniuse.com/user-select-none

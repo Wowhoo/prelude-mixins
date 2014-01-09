@@ -1,5 +1,6 @@
+// =========
 // FlexLess
-// ========
+// =========
 // https://github.com/codio/Flex.less
 // -----------------------------------------------
 
@@ -10,13 +11,13 @@
 // Property Name: display
 // Values: flex | inline-flex
 .display(@value: flex) when (@value = flex) {
-    display: -moz-box;              // Mozilla Old
     display: -webkit-box;           // Webkit Old
+    display: -moz-box;              // Mozilla Old
 }
 
 .display(@value: flex) when (@value = inline-flex) {
-    display: -moz-inline-box;       // Mozilla Old
     display: -webkit-inline-box;    // Webkit Old
+    display: -moz-inline-box;       // Mozilla Old
 }
 
 .display(@value: flex) {
@@ -69,6 +70,7 @@
             justify-content: @value;  // Standard
 }
 
+
 // Cross Axis Alignment
 // --------------------
 //
@@ -99,7 +101,6 @@
         -ms-align-items: @value;  // IE 11 Standard
             align-items: @value;  // Standard
 }
-
 
 
 // Individual Cross-Axis Alignment
@@ -160,7 +161,6 @@
 }
 
 
-
 // Display Order
 // -------------
 //
@@ -190,7 +190,6 @@
            -ms-flex: @arguments;    // IE 10 Mid, IE 11 Standard
                flex: @arguments;    // Standard
 }
-
 
 // Longhand - Flex Grow
 // --------------------
@@ -229,7 +228,6 @@
 }
 
 
-
 // Direction
 // ---------
 //
@@ -264,7 +262,6 @@
 }
 
 
-
 // Old Properties
 // --------------
 .box-direction(@value) {
@@ -276,7 +273,6 @@
     -webkit-box-orient: @value;       // Webkit Old
        -moz-box-orient: @value;       // Mozilla Old
 }
-
 
 
 // Wrapping

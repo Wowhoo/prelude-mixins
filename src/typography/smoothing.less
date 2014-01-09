@@ -1,14 +1,21 @@
+// ===============
+// Font smoothing
+// ===============
+// Example:
+// .font-smoothing(off);
+// -----------------------------------------------
 
-    // @usage: .font-smoothing(off); off|antialiased|subpixel-antialiased
-    
-    .font-smoothing(@var: subpixel-antialiased) {
-        .inseption(@var) when not (@var = subpixel-antialiased) {
-             -webkit-font-smoothing: @var;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .inseption(@var) when (@var = subpixel-antialiased) {
-             -webkit-font-smoothing: @var;
-            -moz-osx-font-smoothing: auto;
-        }
-        .inseption(@var);
+// Font-smoothing
+// ------------------
+// value: off | antialiased | subpixel-antialiased
+.font-smoothing(@var: subpixel-antialiased) {
+    .inseption(@var) when not (@var = subpixel-antialiased) {
+         -webkit-font-smoothing: @var;
+        -moz-osx-font-smoothing: grayscale;
     }
+    .inseption(@var) when (@var = subpixel-antialiased) {
+         -webkit-font-smoothing: @var;
+        -moz-osx-font-smoothing: auto;
+    }
+    .inseption(@var);
+}

@@ -1,5 +1,6 @@
+// ===========
 // Animations
-// ==========
+// ===========
 // Generates `animation` for a given element
 //
 // Link: caniuse http://caniuse.com/css-animation
@@ -8,15 +9,15 @@
 // Examples:
 // .animation(my-animation 6s backwards 2s);
 // .animation(~"my-animation 6s backwards 2s, my-second-animation 3s linear alternate infinite");
+// .animation-name(myanimation);
+// .animation-duration(~"3s, 2s");
+// .animation-timing-function(ease-in-out);
 // .animation-delay(2s);
 // .animation-delay(~"200ms, 2s");
+// .animation-iteration-count(3);
 // .animation-direction(alternate);
 // .animation-direction(~"normal, alternate");
-// .animation-duration(~"3s, 2s");
 // .animation-fill-mode(forwards);
-// .animation-timing-function(ease-in-out);
-// .animation-iteration-count(3);
-// .animation-name(myanimation);
 // .animation-play-state(paused);
 // -----------------------------------------------
 
@@ -53,7 +54,6 @@
     -ms-animation-duration: @duration;
     animation-duration: @duration;
 }
-
 
 // Animation timing function
 // -------------------------
