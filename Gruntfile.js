@@ -1,7 +1,32 @@
 'use strict';
 
 module.exports = function(grunt) {
-
+    var compatibility_pkg = grunt.file.readJSON('src/compatibility/table.json'),
+        images_pkg = grunt.file.readJSON('src/images/table.json'),
+        typography_pkg = grunt.file.readJSON('src/typography/table.json'),
+        utilities_pkg = grunt.file.readJSON('src/utilities/table.json'),
+        compatibility_table = '', images_table = '', typography_table = '', utilities_table = '',
+        compatibility_src = [], images_src = [], typography_src = [], utilities_src = [];
+        var table = function(value_table, value_pkg) {
+          for (var i in value_pkg.table) {
+            value_table += '  \// ' + value_pkg.table[i] + "\n";
+          }
+          return value_table;
+        };
+        var src = function(value_src, value_pkg, menu) {
+          for (var i in value_pkg.table) {
+            value_src.push(menu + value_pkg.table[i] + '.less');
+          }
+          return value_src;
+        };
+        compatibility_table = table(compatibility_table, compatibility_pkg);
+        compatibility_src = src(compatibility_src, compatibility_pkg, 'src/compatibility/');
+        images_table = table(images_table, images_pkg);
+        images_src = src(images_src, images_pkg, 'src/images/');
+        typography_table = table(typography_table, typography_pkg);
+        typography_src = src(typography_src, typography_pkg, 'src/typography/');
+        utilities_table = table(utilities_table, utilities_pkg);
+        utilities_src = src(utilities_src, utilities_pkg, 'src/utilities/');
     // Project configuration.
     grunt.initConfig({
         // Metadata.
@@ -13,69 +38,35 @@ module.exports = function(grunt) {
         },
         concat: {
             options: {
-                separator: '\n\n\n',
+              separator: '\n\n\n',
             },
             compatibility: {
-                src: [ 'src/compatibility/table.less',
-                       'src/compatibility/animations.less',
-                       'src/compatibility/appearance.less',
-                       'src/compatibility/backgrounds.less',
-                       'src/compatibility/border-image.less',
-                       'src/compatibility/border-radius.less',
-                       'src/compatibility/bos-shadow.less',
-                       'src/compatibility/bos-sizing.less',
-                       'src/compatibility/calc.less',
-                       'src/compatibility/columns.less',
-                       'src/compatibility/filters.less',
-                       'src/compatibility/flex.less',
-                       'src/compatibility/inline-block.less',
-                       'src/compatibility/keyframes.less',
-                       'src/compatibility/opacity.less',
-                       'src/compatibility/placeholder.less',
-                       'src/compatibility/scrollbar.less',
-                       'src/compatibility/tab-size.less',
-                       'src/compatibility/transform.less',
-                       'src/compatibility/transitions.less',
-                       'src/compatibility/user-select.less'
-                    ],
-                dest: 'dist/compatibility.less',
+              options: {
+                banner: '\//TABLE OF MIXINS\n' + compatibility_table + '\n\n',
+              },
+              src: compatibility_src,
+              dest: 'dist/compatibility.less',
             },
             images: {
-                src: [ 'src/images/table.less',
-                       'src/images/gradients.less',
-                       'src/images/quality.less',
-                       'src/images/replace.less',
-                       'src/images/responsive.less',
-                       'src/images/sprites.less'
-                    ],
-                dest: 'dist/images.less',
+              options: {
+                banner: '\//TABLE OF MIXINS\n' + images_table + '\n\n',
+              },
+              src: images_src,
+              dest: 'dist/images.less',
             },
             typography: {
-                src: [ 'src/typography/table.less',
-                       'src/typography/drop-cap.less',
-                       'src/typography/ellipsis.less',
-                       'src/typography/font-size.less',
-                       'src/typography/fontface.less',
-                       'src/typography/hyphens.less',
-                       'src/typography/line-height.less',
-                       'src/typography/rhythm.less',
-                       'src/typography/smoothing.less',
-                       'src/typography/text-hide.less'
-                    ],
-                dest: 'dist/typography.less',
+              options: {
+                banner: '\//TABLE OF MIXINS\n' + typography_table + '\n\n',
+              },
+              src: typography_src,
+              dest: 'dist/typography.less',
             },
             utilities: {
-                src: [ 'src/utilities/table.less',
-                       'src/utilities/center-block.less',
-                       'src/utilities/clearfix.less',
-                       'src/utilities/hidden.less',
-                       'src/utilities/margin.less',
-                       'src/utilities/padding.less',
-                       'src/typography/resizable.less',
-                       'src/typography/shapes.less',
-                       'src/typography/tab-focus.less'
-                    ],
-                dest: 'dist/utilities.less',
+              options: {
+                banner: '\//TABLE OF MIXINS\n' + utilities_table + '\n\n',
+              },
+              src: utilities_src,
+              dest: 'dist/utilities.less',
             },
             variables: {
               src: 'src/variables.less',

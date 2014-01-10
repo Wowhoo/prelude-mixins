@@ -1,9 +1,9 @@
-// TABLE OF MIXINS:
-        // gradients
-        // quality
-        // replace
-        // responsive
-        // sprite
+//TABLE OF MIXINS
+  // gradients
+  // quality
+  // replace
+  // responsive
+  // sprite
 
 
 // =================
@@ -128,15 +128,15 @@
 // @see https://developer.mozilla.org/en/CSS/image-rendering
 // ==========================================================================
 .high-quality() {
-	image-rendering:optimizeQuality;
-	-ms-interpolation-mode:bicubic;  /* IE 7+ */
+    image-rendering:optimizeQuality;
+    -ms-interpolation-mode:bicubic;  /* IE 7+ */
 }
 
 // Optimizes the rendering on images so they
 // appear faster, but at a lower quality. Useful for <video>
 // ==========================================================================
 .low-quality() {
-	image-rendering:optimizeSpeed;
+    image-rendering:optimizeSpeed;
 }
 
 // Retina images
@@ -204,62 +204,4 @@
   display: @display;
   max-width: 100%; // Part 1: Set a maximum relative to the parent
   height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
-}
-
-
-// ==========
-// Sprite
-// ==========
-//
-// Examples:
-// .sprite(1, 1, '/example.png');
-// .sprite(1, 1, '/example.png', 20px);
-// .sprite-sized(1, 1, 10px, '/example.png');
-// .sprite-sized(1, 1, 10px, '/example.png', 20px);
-// .sprite-sized(1, 1, 10px, 15px, '/example.png');
-// .sprite-sized(1, 1, 10px, 15px, '/example.png', 20px);
-// .sprite-image('/example.png');
-// .sprite-pos(1, 1);
-// .sprite-pos(1, 1, 20px);
-// .sprite-pos-sized(1, 1, 10px, '/example.png');
-// .sprite-pos-sized(1, 1, 10px, '/example.png', 20px);
-// .sprite-pos-sized(1, 1, 10px, 15px, '/example.png');
-// .sprite-pos-sized(1, 1, 10px, 15px, '/example.png', 20px);
-// -----------------------------------------------
-
-
-// Sprite
-// ------
-.sprite(@x, @y, @sprite-image, @sprite-grid:@sprite-grid) {
-	.sprite-image(@sprite-image);
-	.sprite-pos(@x, @y, @sprite-grid);
-}
-
-.sprite-sized(@x, @y, @size, @sprite-image, @sprite-grid:@sprite-grid) when not (isnumber(@sprite-image)) {
-	.sprite(@x, @y, @sprite-image, @sprite-grid);
-	.size(@size);
-}
-
-.sprite-sized(@x, @y, @width, @height, @sprite-image, @sprite-grid:@sprite-grid) when (isnumber(@height)) {
-	.sprite(@x, @y, @sprite-image, @sprite-grid);
-	.size(@width,@height);
-}
-
-.sprite-image(@sprite-image) {
-	background-image: url(@sprite-image);
-	background-repeat: no-repeat;
-}
-
-.sprite-pos(@x, @y, @sprite-grid:@sprite-grid) {
-	background-position: -(unit(@x*unit(@sprite-grid),px))  -(unit(@y*unit(@sprite-grid),px));
-}
-
-.sprite-pos-sized(@x, @y, @size, @sprite-image, @sprite-grid:@sprite-grid) when not (isnumber(@sprite-image)) {
-	.sprite-pos(@x, @y, @sprite-grid);
-	.size(@size);
-}
-
-.sprite-pos-sized(@x, @y, @width, @height, @sprite-image, @sprite-grid:@sprite-grid) when (isnumber(@height)) {
-	.sprite-pos(@x, @y, @sprite-grid);
-	.size(@width,@height);
 }

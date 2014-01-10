@@ -1,24 +1,24 @@
-// TABLE OF MIXINS:
-        // animations
-        // appearance
-        // backgrounds
-        // border-image
-        // border-radius
-        // box-shadow
-        // box-sizing
-        // calc
-        // columns
-        // filters
-        // flex
-        // inline-block
-        // keyframes
-        // opacity
-        // placeholder
-        // scrollbar
-        // tab-size
-        // transform
-        // transitions
-        // user-select
+//TABLE OF MIXINS
+  // animations
+  // appearance
+  // backgrounds
+  // border-image
+  // border-radius
+  // box-shadow
+  // box-sizing
+  // calc
+  // columns
+  // filters
+  // flex
+  // inline-block
+  // keyframes
+  // opacity
+  // placeholder
+  // scrollbar
+  // tab-size
+  // transform
+  // transitions
+  // user-select
 
 
 // ===========
@@ -170,9 +170,9 @@
 //
 // Values: normal | icon | window | button | menu | field
 .appearance (@value) {
-	-webkit-appearance: @value;
-	   -moz-appearance: @value;
-	        appearance: @value;
+    -webkit-appearance: @value;
+       -moz-appearance: @value;
+            appearance: @value;
 }
 
 
@@ -377,6 +377,70 @@
 }
 
 
+// ===========
+// Box shadow
+// ===========
+// Generates cross-browser-compatible `box-shadow` for a given element
+//
+// Link: caniuse http://caniuse.com/css-boxshadow
+// Link: spec http://www.w3.org/TR/css3-background/#box-shadow
+// 
+// Examples: 
+// .box-shadow(5px 5px 10px 5px #aaa);
+// .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(0,0,0)");
+// -----------------------------------------------
+
+
+// Box shadow
+// ----------
+// Values: none | <inset> <offset-x> <offset-y> <blur> <spread> <color>
+.box-shadow(@args) when (isstring(@args)) {
+  -webkit-box-shadow: e(@args);
+          box-shadow: e(@args);
+}
+.box-shadow(@args) when not (isstring(@args)) {
+  -webkit-box-shadow: @args;
+          box-shadow: @args;
+}
+
+
+// ===========
+// Box Sizing
+// ===========
+// Generates cross-browser-compatible `box-sizing` output for a given element.
+//
+// Link: caniuse http://caniuse.com/css3-boxsizing
+// Link: mdn https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+//
+// Examples: 
+// .box-sizing(border-box);
+// .border-box();
+// .content-box();
+// -----------------------------------------------
+
+
+// Box sizing
+// ----------
+// Values: content-box | border-box | inherit
+.box-sizing(@boxmodel: content-box) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+// Border box
+// ----------
+.border-box(){
+  .box-sizing(border-box);
+}
+
+// Content box
+// ----------
+.content-box(){
+  .box-sizing(content-box);
+}
+
+
 // ==========
 // Calc
 // ==========
@@ -395,12 +459,12 @@
 // property: width | height | padding | margin
 // value: px | em | rem | percentage
 .calc(@property, @value) { 
-	.inseption(@property, @value) {
-	@output: ~'0; @{property}: calc(@{value}); @{property}:-webkit-calc(@{value}); @{property}:-moz-calc(@{value})';
-		-pl-property: @output;
-	}
-	
-	.inseption(@property, @value);
+    .inseption(@property, @value) {
+    @output: ~'0; @{property}: calc(@{value}); @{property}:-webkit-calc(@{value}); @{property}:-moz-calc(@{value})';
+        -pl-property: @output;
+    }
+    
+    .inseption(@property, @value);
 }
 
 
@@ -498,10 +562,10 @@
 // ------
 // Values: blur | brightness | contrast | drop-shadow | grayscale | hue-rotate | invert | sepia
 .filter(@filter: grayscale(100%)) {
-	-webkit-filter: @filter;
-	-moz-filter: @filter;
-	-ms-filter: @filter;
-	filter: @filter;
+    -webkit-filter: @filter;
+    -moz-filter: @filter;
+    -ms-filter: @filter;
+    filter: @filter;
 }
 
 
@@ -1043,9 +1107,9 @@
 //
 // Values: <number>
 .tab-size (@value) {
-	-moz-tab-size: @value;
-	  -o-tab-size: @value;
-	     tab-size: @value;
+    -moz-tab-size: @value;
+      -o-tab-size: @value;
+         tab-size: @value;
 }
 
 

@@ -1,0 +1,12 @@
+{
+    "table": ["drop-cap",
+              "ellipsis",
+              "font-size",
+              "fontface",
+              "hyphens",
+              "line-height",
+              "rhythm",
+              "smoothing",
+              "text-hide"
+            ]
+}

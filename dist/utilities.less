@@ -1,12 +1,12 @@
-// TABLE OF MIXINS:
-        // center-block
-        // clearfix
-        // hidden
-        // margin
-        // padding
-        // resizable
-        // shapes
-        // tab-focus
+//TABLE OF MIXINS
+  // center-block
+  // clearfix
+  // hidden
+  // margin
+  // padding
+  // resizable
+  // shapes
+  // tab-focus
 
 
 // =============
@@ -134,81 +134,81 @@
 // -------------------
 .margin-rem(@value, @default-font-size: @default-font-size) {
 
-	@length: length(@value);
-	@default-value: unit(@default-font-size);
+    @length: length(@value);
+    @default-value: unit(@default-font-size);
  
-	.inseption(@value) when (@length = 1) {
-		@rem-value: unit(unit(extract(@value, 1))/@default-value,rem);
-	.margin-inseption(@rem-value)
-	}
-	.inseption(@value) when (@length = 2) {
-		@rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem);
-	.margin-inseption(@rem-value)
-	}
-	.inseption(@value) when (@length = 3) {
-		@rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem) unit(unit(extract(@value, 3))/@default-value,rem);
-	.margin-inseption(@rem-value)
-	}
-	.inseption(@value) when (@length = 4) {
-		@rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem) unit(unit(extract(@value, 3))/@default-value,rem) unit(unit(extract(@value, 4))/@default-value,rem);
-	.margin-inseption(@rem-value)
-	}
-	.margin-inseption(@value) {
-		 margin: @value;
-	}
+    .inseption(@value) when (@length = 1) {
+        @rem-value: unit(unit(extract(@value, 1))/@default-value,rem);
+    .margin-inseption(@rem-value)
+    }
+    .inseption(@value) when (@length = 2) {
+        @rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem);
+    .margin-inseption(@rem-value)
+    }
+    .inseption(@value) when (@length = 3) {
+        @rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem) unit(unit(extract(@value, 3))/@default-value,rem);
+    .margin-inseption(@rem-value)
+    }
+    .inseption(@value) when (@length = 4) {
+        @rem-value: unit(unit(extract(@value, 1))/@default-value,rem) unit(unit(extract(@value, 2))/@default-value,rem) unit(unit(extract(@value, 3))/@default-value,rem) unit(unit(extract(@value, 4))/@default-value,rem);
+    .margin-inseption(@rem-value)
+    }
+    .margin-inseption(@value) {
+         margin: @value;
+    }
  
-	.margin-inseption(@value);
-	.inseption(@value);
+    .margin-inseption(@value);
+    .inseption(@value);
 }
 
 .margin-top-rem(@value, @default-font-size: @default-font-size) {
-	margin-top: @value;
-	margin-top: unit(unit(@value)/unit(@default-font-size),rem);
+    margin-top: @value;
+    margin-top: unit(unit(@value)/unit(@default-font-size),rem);
 }
 
 .margin-right-rem(@value, @default-font-size: @default-font-size) {
-	margin-right: @value;
-	margin-right: unit(unit(@value)/unit(@default-font-size),rem);
+    margin-right: @value;
+    margin-right: unit(unit(@value)/unit(@default-font-size),rem);
 }
 
 .margin-bottom-rem(@value, @default-font-size: @default-font-size) {
-	margin-bottom: @value;
-	margin-bottom: unit(unit(@value)/unit(@default-font-size),rem);
+    margin-bottom: @value;
+    margin-bottom: unit(unit(@value)/unit(@default-font-size),rem);
 }
 
 .margin-left-rem(@value, @default-font-size: @default-font-size) {
-	margin-left: @value;
-	margin-left: unit(unit(@value)/unit(@default-font-size),rem);
+    margin-left: @value;
+    margin-left: unit(unit(@value)/unit(@default-font-size),rem);
 }
 
 // Margin to em
 // --------------------
 // According to the context switching unit into em
 .margin-em(@value, @context-font-size: @default-font-size) {
-	@length: length(@value);
-	@default-value: unit(@context-font-size);
+    @length: length(@value);
+    @default-value: unit(@context-font-size);
  
-	.inseption(@value) when (@length = 1) {
-		@em-value: unit(unit(extract(@value, 1))/@default-value,em);
-	.margin-inseption(@em-value)
-	}
-	.inseption(@value) when (@length = 2) {
-		@em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em);
-	.margin-inseption(@em-value)
-	}
-	.inseption(@value) when (@length = 3) {
-		@em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em) unit(unit(extract(@value, 3))/@default-value,em);
-	.margin-inseption(@em-value)
-	}
-	.inseption(@value) when (@length = 4) {
-		@em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em) unit(unit(extract(@value, 3))/@default-value,em) unit(unit(extract(@value, 4))/@default-value,em);
-	.margin-inseption(@em-value)
-	}
+    .inseption(@value) when (@length = 1) {
+        @em-value: unit(unit(extract(@value, 1))/@default-value,em);
+    .margin-inseption(@em-value)
+    }
+    .inseption(@value) when (@length = 2) {
+        @em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em);
+    .margin-inseption(@em-value)
+    }
+    .inseption(@value) when (@length = 3) {
+        @em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em) unit(unit(extract(@value, 3))/@default-value,em);
+    .margin-inseption(@em-value)
+    }
+    .inseption(@value) when (@length = 4) {
+        @em-value: unit(unit(extract(@value, 1))/@default-value,em) unit(unit(extract(@value, 2))/@default-value,em) unit(unit(extract(@value, 3))/@default-value,em) unit(unit(extract(@value, 4))/@default-value,em);
+    .margin-inseption(@em-value)
+    }
  
-	.margin-inseption(@value) {
-		 margin: @value;
-	}
-	.inseption(@value);
+    .margin-inseption(@value) {
+         margin: @value;
+    }
+    .inseption(@value);
 }
 
 .margin-top-em(@value, @context-font-size: @default-font-size) {
@@ -357,4 +357,117 @@
 
 .padding-left-em(@value, @context-font-size: @default-font-size) {
     padding-left: unit(unit(@value)/unit(@context-font-size),em);
+}
+
+
+// ===========
+// Resizable
+// ===========
+// Resize anything
+//
+// Example: 
+// .resizable(horizontal);
+// -----------------------------------------------
+
+// Resizable
+// ---------
+// value: horizontal | vertical | both
+.resizable(@direction) {
+  resize: @direction;
+  overflow: auto; // Safari fix
+}
+
+
+// ==============
+// Shapes mixins
+// ==============
+//
+// Examples:
+// .size(500px, 300px);
+// .square(100%);
+// .circle(10px);
+// .triangle(up, 10px, #ccc);
+// .triangle(down, 10px, #ccc);
+// .triangle(right, 10px, #ccc);
+// .triangle(left, 10px, #ccc);
+// -----------------------------------------------
+
+// Size
+// ----
+// value: <length> | <percentage>
+.size(@width, @height: false) {
+    .size-inseption(@width, @height) {
+        width: @width;
+        height: @height;
+    }
+    .inseption(@width, @height) when not (@height = false) {
+        .size-inseption(@width, @height);
+    }
+    .inseption(@width, @height) when (@height = false) {
+        .size-inseption(@width, @width);
+    }
+    .inseption(@width, @height);
+}
+
+// Square
+// ------
+// value: <length> | <percentage>
+.square(@size) {
+  .size(@size, @size);
+}
+
+// Circle
+// ------
+// value: <length> | <percentage>
+.circle(@size) {
+    .size(@size, @size);
+    -moz-border-radius: @size/2;
+    -webkit-border-radius: @size/2;
+    border-radius: @size/2;
+}
+
+
+// Triangle
+// --------
+.triangle(@direction, @size, @color) when (@direction = up) {
+    width: 0;
+    height: 0;
+    border-left: @size solid transparent;
+    border-right: @size solid transparent;
+    border-bottom: @size solid @color;
+}
+.triangle(@direction, @size, @color) when (@direction = down) {
+    width: 0;
+    height: 0;
+    border-left: @size solid transparent;
+    border-right: @size solid transparent;
+    border-top: @size solid @color;
+}
+.triangle(@direction, @size, @color) when (@direction = left) {
+    width: 0;
+    height: 0;
+    border-top: @size solid transparent;
+    border-bottom: @size solid transparent;
+    border-right: @size solid @color;
+}
+.triangle(@direction, @size, @color) when (@direction = right) {
+    width: 0;
+    height: 0;
+    border-top: @size solid transparent;
+    border-bottom: @size solid transparent;
+    border-left: @size solid @color;
+}
+
+
+// ==========
+// Tab focus
+// ==========
+// WebKit-style focus
+// -----------------------------------------------
+.tab-focus() {
+  // Default
+  outline: thin dotted;
+  // WebKit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
