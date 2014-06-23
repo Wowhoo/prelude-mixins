@@ -5,28 +5,34 @@ module.exports = function(grunt) {
         images_pkg = grunt.file.readJSON('src/images/table.json'),
         typography_pkg = grunt.file.readJSON('src/typography/table.json'),
         utilities_pkg = grunt.file.readJSON('src/utilities/table.json'),
-        compatibility_table = '', images_table = '', typography_table = '', utilities_table = '',
-        compatibility_src = [], images_src = [], typography_src = [], utilities_src = [];
-        var table = function(value_table, value_pkg) {
-          for (var i in value_pkg.table) {
+        compatibility_table = '',
+        images_table = '',
+        typography_table = '',
+        utilities_table = '',
+        compatibility_src = [],
+        images_src = [],
+        typography_src = [],
+        utilities_src = [];
+    var table = function(value_table, value_pkg) {
+        for (var i in value_pkg.table) {
             value_table += '  \// ' + value_pkg.table[i] + "\n";
-          }
-          return value_table;
-        };
-        var src = function(value_src, value_pkg, menu) {
-          for (var i in value_pkg.table) {
+        }
+        return value_table;
+    };
+    var src = function(value_src, value_pkg, menu) {
+        for (var i in value_pkg.table) {
             value_src.push(menu + value_pkg.table[i] + '.less');
-          }
-          return value_src;
-        };
-        compatibility_table = table(compatibility_table, compatibility_pkg);
-        compatibility_src = src(compatibility_src, compatibility_pkg, 'src/compatibility/');
-        images_table = table(images_table, images_pkg);
-        images_src = src(images_src, images_pkg, 'src/images/');
-        typography_table = table(typography_table, typography_pkg);
-        typography_src = src(typography_src, typography_pkg, 'src/typography/');
-        utilities_table = table(utilities_table, utilities_pkg);
-        utilities_src = src(utilities_src, utilities_pkg, 'src/utilities/');
+        }
+        return value_src;
+    };
+    compatibility_table = table(compatibility_table, compatibility_pkg);
+    compatibility_src = src(compatibility_src, compatibility_pkg, 'src/compatibility/');
+    images_table = table(images_table, images_pkg);
+    images_src = src(images_src, images_pkg, 'src/images/');
+    typography_table = table(typography_table, typography_pkg);
+    typography_src = src(typography_src, typography_pkg, 'src/typography/');
+    utilities_table = table(utilities_table, utilities_pkg);
+    utilities_src = src(utilities_src, utilities_pkg, 'src/utilities/');
     // Project configuration.
     grunt.initConfig({
         // Metadata.
@@ -38,52 +44,52 @@ module.exports = function(grunt) {
         },
         concat: {
             options: {
-              separator: '\n\n\n',
+                separator: '\n\n\n',
             },
             compatibility: {
-              options: {
-                banner: '\//TABLE OF MIXINS\n' + compatibility_table + '\n\n',
-              },
-              src: compatibility_src,
-              dest: 'dist/compatibility.less',
+                options: {
+                    banner: '\//TABLE OF MIXINS\n' + compatibility_table + '\n\n',
+                },
+                src: compatibility_src,
+                dest: 'dist/compatibility.less',
             },
             images: {
-              options: {
-                banner: '\//TABLE OF MIXINS\n' + images_table + '\n\n',
-              },
-              src: images_src,
-              dest: 'dist/images.less',
+                options: {
+                    banner: '\//TABLE OF MIXINS\n' + images_table + '\n\n',
+                },
+                src: images_src,
+                dest: 'dist/images.less',
             },
             typography: {
-              options: {
-                banner: '\//TABLE OF MIXINS\n' + typography_table + '\n\n',
-              },
-              src: typography_src,
-              dest: 'dist/typography.less',
+                options: {
+                    banner: '\//TABLE OF MIXINS\n' + typography_table + '\n\n',
+                },
+                src: typography_src,
+                dest: 'dist/typography.less',
             },
             utilities: {
-              options: {
-                banner: '\//TABLE OF MIXINS\n' + utilities_table + '\n\n',
-              },
-              src: utilities_src,
-              dest: 'dist/utilities.less',
+                options: {
+                    banner: '\//TABLE OF MIXINS\n' + utilities_table + '\n\n',
+                },
+                src: utilities_src,
+                dest: 'dist/utilities.less',
             },
             variables: {
-              src: 'src/variables.less',
-              dest: 'dist/variables.less',
+                src: 'src/variables.less',
+                dest: 'dist/variables.less',
             }
         },
         lessimportfile: {
-          options: {},
-          files: {
-            src: [  'dist/variables.less',
+            options: {},
+            files: {
+                src: ['dist/variables.less',
                     'dist/compatibility.less',
                     'dist/images.less',
                     'dist/typography.less',
                     'dist/utilities.less'
-                  ],
-            dest: 'dist/prelude-mixins.less',
-          },
+                ],
+                dest: 'dist/prelude-mixins.less',
+            },
         },
         jsbeautifier: {
             files: ["Gruntfile.js"],

@@ -459,12 +459,9 @@
 // property: width | height | padding | margin
 // value: px | em | rem | percentage
 .calc(@property, @value) { 
-    .inseption(@property, @value) {
-    @output: ~'0; @{property}: calc(@{value}); @{property}:-webkit-calc(@{value}); @{property}:-moz-calc(@{value})';
-        -pl-property: @output;
-    }
-    
-    .inseption(@property, @value);
+	@{property}: ~"calc(@{value})";
+	@{property}: ~"-webkit-calc(@{value})";
+	@{property}: ~"-moz-calc(@{value})";
 }
 
 

@@ -26,10 +26,10 @@
     "node": ">= 0.8.0"
   },
   "devDependencies": {
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-jsbeautifier": "~0.1.5",
-    "grunt-lessimportfile": "~0.2.0",
-    "grunt": "*"
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-jsbeautifier": "*",
+    "grunt-lessimportfile": "*",
+    "grunt": "~0.4.5"
   }
 }
